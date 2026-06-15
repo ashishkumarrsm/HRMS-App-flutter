@@ -4,6 +4,7 @@ import 'package:hrms/EmployeeManagment/Data/employee_Home_Card_Data.dart';
 import 'package:hrms/EmployeeManagment/employee_Info.dart';
 import 'package:hrms/EmployeeManagment/employee_Leaves.dart';
 import 'package:hrms/EmployeeManagment/employee_Shift_Details.dart';
+import 'package:hrms/EmployeeManagment/employee_attendance_calendar_screen.dart';
 
 class EmployeeEmployeeDetailsScreen extends StatefulWidget {
   final Employee employee;
@@ -234,12 +235,7 @@ class _EmployeeEmployeeDetailsScreenState
                 ),
 
                 //!=========== Attendance========
-                const Center(
-                  child: Text(
-                    "Attendance Details",
-                    style: TextStyle(fontSize: 18),
-                  ),
-                ),
+                AttendanceCalendarScreen(),
 
                 //! ============== Leaves===========
                 EmployeeLeaves(employeeId: widget.employee.id),

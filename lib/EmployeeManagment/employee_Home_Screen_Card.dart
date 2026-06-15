@@ -3,17 +3,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hrms/EmployeeManagment/employee_Employee_Details_Screen.dart';
 import '../EmployeeManagment/Data/employee_Home_Card_Data.dart';
 
-class EmployeeHomeScreenCard extends StatefulWidget {
+class EmployeeHomeScreenCard extends StatelessWidget {
   const EmployeeHomeScreenCard({super.key});
 
   @override
-  State<EmployeeHomeScreenCard> createState() => _EmployeeHomeScreenCardState();
-}
-
-class _EmployeeHomeScreenCardState extends State<EmployeeHomeScreenCard> {
-  @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       itemCount: employees.length,
       itemBuilder: (context, index) {
         final employee = employees[index];
@@ -21,7 +18,16 @@ class _EmployeeHomeScreenCardState extends State<EmployeeHomeScreenCard> {
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           child: InkWell(
-            onTap: () {
+            borderRadius: BorderRadius.circular(20),
+            onTap: () async {
+              final isKeyboardOpen =
+                  MediaQuery.of(context).viewInsets.bottom > 0;
+
+              if (isKeyboardOpen) {
+                FocusScope.of(context).unfocus();
+
+                await Future.delayed(const Duration(milliseconds: 300));
+              }
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -46,7 +52,6 @@ class _EmployeeHomeScreenCardState extends State<EmployeeHomeScreenCard> {
                 ),
                 child: Column(
                   children: [
-                    // Header
                     Row(
                       children: [
                         Image.asset(
@@ -69,7 +74,6 @@ class _EmployeeHomeScreenCardState extends State<EmployeeHomeScreenCard> {
                                     color: const Color(0xFF1E293B),
                                   ),
                                 ),
-
                                 TextSpan(
                                   text: " · ${employee.id}",
                                   style: GoogleFonts.inter(
@@ -78,7 +82,6 @@ class _EmployeeHomeScreenCardState extends State<EmployeeHomeScreenCard> {
                                     color: const Color(0xFF6B7280),
                                   ),
                                 ),
-
                                 TextSpan(
                                   text: " · ${employee.gender.toUpperCase()}",
                                   style: GoogleFonts.inter(
@@ -117,12 +120,10 @@ class _EmployeeHomeScreenCardState extends State<EmployeeHomeScreenCard> {
                       ],
                     ),
 
-                    // const SizedBox(height: 16),
                     const Divider(color: Color(0xFFE5E7EB)),
 
                     const SizedBox(height: 5),
 
-                    // Row 1
                     Row(
                       children: [
                         Expanded(
@@ -131,7 +132,7 @@ class _EmployeeHomeScreenCardState extends State<EmployeeHomeScreenCard> {
                             value: employee.email,
                           ),
                         ),
-                        SizedBox(width: 5),
+                        const SizedBox(width: 5),
                         Expanded(
                           child: _InfoItem(
                             title: "Mobile Number",
@@ -143,7 +144,6 @@ class _EmployeeHomeScreenCardState extends State<EmployeeHomeScreenCard> {
 
                     const SizedBox(height: 12),
 
-                    // Row 2
                     Row(
                       children: [
                         Expanded(
@@ -152,7 +152,7 @@ class _EmployeeHomeScreenCardState extends State<EmployeeHomeScreenCard> {
                             value: employee.position,
                           ),
                         ),
-                        SizedBox(width: 5),
+                        const SizedBox(width: 5),
                         Expanded(
                           child: _InfoItem(
                             title: "Department",
@@ -164,7 +164,6 @@ class _EmployeeHomeScreenCardState extends State<EmployeeHomeScreenCard> {
 
                     const SizedBox(height: 12),
 
-                    // Row 3
                     Row(
                       children: [
                         Expanded(
@@ -173,7 +172,7 @@ class _EmployeeHomeScreenCardState extends State<EmployeeHomeScreenCard> {
                             value: employee.yearsOfService,
                           ),
                         ),
-                        SizedBox(width: 5),
+                        const SizedBox(width: 5),
                         Expanded(
                           child: _InfoItem(
                             title: "Join Date",
@@ -211,9 +210,7 @@ class _InfoItem extends StatelessWidget {
             color: const Color(0xFF6B7280),
           ),
         ),
-
         const SizedBox(height: 6),
-
         Text(
           value,
           style: GoogleFonts.inter(

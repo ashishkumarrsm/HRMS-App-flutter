@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hrms/EmployeeManagment/employee_Request_Leave.dart';
 import '../EmployeeManagment/Data/employee_Leaves_Data.dart';
 
 class LeaveCard extends StatelessWidget {
@@ -52,12 +53,23 @@ class LeaveCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  child: Text(
-                    "Apply CO Leave",
-                    style: GoogleFonts.inter(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              EmployeeRequestCompoffLeavePage(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      "Apply CO Leave",
+                      style: GoogleFonts.inter(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),

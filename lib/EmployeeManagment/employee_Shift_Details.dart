@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hrms/EmployeeManagment/Data/employee_Home_Card_Data.dart';
 import 'package:hrms/EmployeeManagment/Data/employee_Shift_Card_Data.dart';
+import 'package:hrms/EmployeeManagment/employee_Edit_Shift.dart';
 
 class EmployeeShiftDetails extends StatefulWidget {
   final Employee employee;
@@ -77,7 +78,14 @@ class _EmployeeShiftDetailsState extends State<EmployeeShiftDetails> {
                         ),
                         const Spacer(),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => EmployeeEditshift(),
+                              ),
+                            );
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xFF644EE5),
                             foregroundColor: Colors.white,

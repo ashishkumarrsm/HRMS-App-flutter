@@ -80,6 +80,7 @@ class _EmployeeLeavesState extends State<EmployeeLeaves>
                       Tab(text: "Requested"),
                       Tab(text: "Approved"),
                       Tab(text: "Rejected"),
+                      // Tab(text: ""),
                     ],
                   ),
                 ),
@@ -129,10 +130,10 @@ class _EmployeeLeavesState extends State<EmployeeLeaves>
   // ================= CARD =================
   Widget _buildHistoryCard(LeaveHistoryRecord record) {
     Color pillBgColor = record.status == "Requested"
-        ? const Color(0xFFFEF08A)
+        ? const Color(0xFFFEF9C3)
         : record.status == "Approved"
-        ? const Color(0xFFBBF7D0)
-        : const Color(0xFFFECACA);
+        ? const Color(0xFFDCFCE7)
+        : const Color(0xFFFEE2E2);
     Color pillTextColor = record.status == "Requested"
         ? const Color(0xFFCA8A04)
         : record.status == "Approved"
