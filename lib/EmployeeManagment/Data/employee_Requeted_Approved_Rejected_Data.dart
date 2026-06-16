@@ -1,8 +1,9 @@
 class LeaveHistoryRecord {
   final String employeeId;
-  final String leaveCategory; // e.g., "Casual Leave"
-  final String status; // "Requested", "Approved", or "Rejected"
-  final String leaveType; // e.g., "Full Day"
+  final String employeeName;
+  final String leaveCategory;
+  final String status;
+  final String leaveType;
   final String startDate;
   final String endDate;
   final String requestedDays;
@@ -12,6 +13,7 @@ class LeaveHistoryRecord {
 
   LeaveHistoryRecord({
     required this.employeeId,
+    required this.employeeName,
     required this.leaveCategory,
     required this.status,
     required this.leaveType,
@@ -35,6 +37,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
 
   // --- EMP001 : REQUESTED ---
   LeaveHistoryRecord(
+    employeeName: "Ashish Kumar",
     employeeId: "EMP001",
     leaveCategory: "Casual Leave",
     status: "Requested",
@@ -48,6 +51,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
   ),
   LeaveHistoryRecord(
     employeeId: "EMP001",
+    employeeName: "Ashish Kumar",
     leaveCategory: "Sick Leave",
     status: "Requested",
     leaveType: "Half Day",
@@ -60,6 +64,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
   ),
   LeaveHistoryRecord(
     employeeId: "EMP001",
+    employeeName: "Ashish Kumar",
     appliedOn: "10 Mar 2026",
     leaveCategory: "Casual Leave",
     status: "Requested",
@@ -72,6 +77,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
   ),
   LeaveHistoryRecord(
     employeeId: "EMP001",
+    employeeName: "Ashish Kumar",
     appliedOn: "10 Mar 2026",
     leaveCategory: "Comp Off Leave",
     status: "Requested",
@@ -84,6 +90,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
   ),
   LeaveHistoryRecord(
     employeeId: "EMP001",
+    employeeName: "Ashish Kumar",
     appliedOn: "10 Mar 2026",
     leaveCategory: "Casual Leave",
     status: "Requested",
@@ -98,6 +105,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
   // --- EMP001 : APPROVED ---
   LeaveHistoryRecord(
     employeeId: "EMP001",
+    employeeName: "Ashish Kumar",
     appliedOn: "10 Mar 2026",
     leaveCategory: "Casual Leave",
     status: "Approved",
@@ -110,6 +118,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
   ),
   LeaveHistoryRecord(
     employeeId: "EMP001",
+    employeeName: "Ashish Kumar",
     appliedOn: "10 Mar 2026",
     leaveCategory: "Sick Leave",
     status: "Approved",
@@ -122,6 +131,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
   ),
   LeaveHistoryRecord(
     employeeId: "EMP001",
+    employeeName: "Ashish Kumar",
     appliedOn: "10 Mar 2026",
     leaveCategory: "Restricted Leave (RH)",
     status: "Approved",
@@ -134,6 +144,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
   ),
   LeaveHistoryRecord(
     employeeId: "EMP001",
+    employeeName: "Ashish Kumar",
     appliedOn: "10 Mar 2026",
     leaveCategory: "Casual Leave",
     status: "Approved",
@@ -147,6 +158,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
 
   // --- EMP001 : REJECTED ---
   LeaveHistoryRecord(
+    employeeName: "Ashish Kumar",
     employeeId: "EMP001",
     appliedOn: "10 Mar 2026",
     leaveCategory: "Restricted Leave (RH)",
@@ -160,6 +172,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
   ),
   LeaveHistoryRecord(
     employeeId: "EMP001",
+    employeeName: "Ashish Kumar",
     leaveCategory: "Casual Leave",
     status: "Rejected",
     leaveType: "Full Day",
@@ -171,6 +184,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
     available: "2",
   ),
   LeaveHistoryRecord(
+    employeeName: "Ashish Kumar",
     employeeId: "EMP001",
     leaveCategory: "Sick Leave",
     status: "Rejected",
@@ -183,6 +197,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
     available: "2",
   ),
   LeaveHistoryRecord(
+    employeeName: "Ashish Kumar",
     employeeId: "EMP001",
     leaveCategory: "Casual Leave",
     status: "Rejected",
@@ -203,6 +218,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
   // --- EMP002 : REQUESTED ---
   LeaveHistoryRecord(
     employeeId: "EMP002",
+    employeeName: "Ashish Kumar",
     appliedOn: "10 Mar 2026",
     leaveCategory: "Sick Leave",
     status: "Requested",
@@ -215,6 +231,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
   ),
   LeaveHistoryRecord(
     employeeId: "EMP002",
+    employeeName: "Ashish Kumar",
     leaveCategory: "Casual Leave",
     status: "Requested",
     leaveType: "Full Day",
@@ -226,6 +243,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
     available: "2",
   ),
   LeaveHistoryRecord(
+    employeeName: "Ashish Kumar",
     employeeId: "EMP002",
     leaveCategory: "Casual Leave",
     status: "Requested",
@@ -240,6 +258,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
 
   // --- EMP002 : APPROVED ---
   LeaveHistoryRecord(
+    employeeName: "Ashish Kumar",
     employeeId: "EMP002",
     leaveCategory: "Casual Leave",
     status: "Approved",
@@ -252,6 +271,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
     reason: defaultReason,
   ),
   LeaveHistoryRecord(
+    employeeName: "Ashish Kumar",
     employeeId: "EMP002",
     leaveCategory: "Restricted Leave (RH)",
     status: "Approved",
@@ -264,6 +284,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
     available: "2",
   ),
   LeaveHistoryRecord(
+    employeeName: "Ashish Kumar",
     employeeId: "EMP002",
     leaveCategory: "Casual Leave",
     status: "Approved",
@@ -276,6 +297,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
     available: "2",
   ),
   LeaveHistoryRecord(
+    employeeName: "Ashish Kumar",
     employeeId: "EMP002",
     leaveCategory: "Comp Off Leave",
     status: "Approved",
@@ -290,6 +312,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
 
   // --- EMP002 : REJECTED ---
   LeaveHistoryRecord(
+    employeeName: "Ashish Kumar",
     employeeId: "EMP002",
     leaveCategory: "Casual Leave",
     status: "Rejected",
@@ -302,6 +325,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
     available: "2",
   ),
   LeaveHistoryRecord(
+    employeeName: "Ashish Kumar",
     employeeId: "EMP002",
     leaveCategory: "Casual Leave",
     status: "Rejected",
@@ -320,6 +344,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
 
   // --- EMP003 : REQUESTED ---
   LeaveHistoryRecord(
+    employeeName: "Ashish Kumar",
     employeeId: "EMP003",
     leaveCategory: "Casual Leave",
     status: "Requested",
@@ -332,6 +357,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
     available: "2",
   ),
   LeaveHistoryRecord(
+    employeeName: "Ashish Kumar",
     employeeId: "EMP003",
     leaveCategory: "Casual Leave",
     status: "Requested",
@@ -344,6 +370,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
     available: "2",
   ),
   LeaveHistoryRecord(
+    employeeName: "Ashish Kumar",
     employeeId: "EMP003",
     leaveCategory: "Sick Leave",
     status: "Requested",
@@ -359,6 +386,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
 
   // --- EMP003 : APPROVED ---
   LeaveHistoryRecord(
+    employeeName: "Ashish Kumar",
     employeeId: "EMP003",
     leaveCategory: "Medical Leave",
     appliedOn: "10 Mar 2026",
@@ -372,6 +400,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
   ),
   LeaveHistoryRecord(
     employeeId: "EMP003",
+    employeeName: "Ashish Kumar",
     leaveCategory: "Casual Leave",
     status: "Approved",
     leaveType: "Full Day",
@@ -384,6 +413,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
   ),
   LeaveHistoryRecord(
     employeeId: "EMP003",
+    employeeName: "Ashish Kumar",
     leaveCategory: "Casual Leave",
     appliedOn: "10 Mar 2026",
     status: "Approved",
@@ -397,6 +427,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
 
   // --- EMP003 : REJECTED ---
   LeaveHistoryRecord(
+    employeeName: "Ashish Kumar",
     employeeId: "EMP003",
     leaveCategory: "Casual Leave",
     status: "Rejected",
@@ -409,6 +440,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
     reason: defaultReason,
   ),
   LeaveHistoryRecord(
+    employeeName: "Ashish Kumar",
     employeeId: "EMP003",
     leaveCategory: "Casual Leave",
     available: "2",
@@ -430,6 +462,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
     status: "Requested",
     leaveType: "Full Day",
     startDate: "25 Apr 2026",
+    employeeName: "Ashish Kumar",
     endDate: "26 Apr 2026",
     appliedOn: "10 Mar 2026",
     available: "2",
@@ -443,6 +476,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
     leaveType: "Full Day",
     available: "2",
     startDate: "10 Jan 2026",
+    employeeName: "Ashish Kumar",
     appliedOn: "10 Mar 2026",
     endDate: "10 Jan 2026",
     requestedDays: "1",
@@ -454,6 +488,7 @@ List<LeaveHistoryRecord> leaveHistoryData = [
     status: "Approved",
     leaveType: "Half Day",
     appliedOn: "10 Mar 2026",
+    employeeName: "Ashish Kumar",
     startDate: "05 Apr 2026",
     endDate: "05 Apr 2026",
     available: "2",

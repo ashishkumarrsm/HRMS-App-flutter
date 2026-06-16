@@ -68,7 +68,7 @@ class _EmployeeLeavesDetailState extends State<EmployeeLeavesDetail> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
-          "Lead Details",
+          "Leave Details",
           style: GoogleFonts.inter(
             fontWeight: FontWeight.w600,
             color: Colors.black,
@@ -188,257 +188,253 @@ class _EmployeeLeavesDetailState extends State<EmployeeLeavesDetail> {
 
             const SizedBox(height: 30),
             Divider(),
-            Row(
-              children: [
-                Expanded(
-                  child: OutlinedButton(
-                    onPressed: () {
-                      showModalBottomSheet(
-                        context: context,
-                        backgroundColor: Colors.white,
-                        isScrollControlled: true,
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.vertical(
-                            top: Radius.circular(20),
-                          ),
-                        ),
-                        builder: (context) {
-                          return Container(
-                            width: double.infinity,
-                            padding: const EdgeInsets.all(16),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Row(
-                                  children: [
-                                    Text(
-                                      "Reject Leave Request",
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                    Spacer(),
-                                    InkWell(
-                                      onTap: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Image.asset(
-                                        "assets/images/Close Icon.png",
-                                        width: 24,
-                                        height: 24,
-                                      ),
-                                    ),
-                                  ],
-                                ),
+          ],
+        ),
+      ),
 
-                                SizedBox(height: 20),
-                                Divider(),
-                                SizedBox(height: 24),
-                                Column(
-                                  children: [
-                                    Text(
-                                      "Are you sure you want to reject this leave request",
+      bottomNavigationBar: SafeArea(
+        child: Container(
+          padding: EdgeInsets.only(top: 16, left: 16, right: 16),
+          child: Row(
+            children: [
+              Expanded(
+                child: OutlinedButton(
+                  onPressed: () {
+                    showModalBottomSheet(
+                      context: context,
+                      backgroundColor: Colors.white,
+                      isScrollControlled: true,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(20),
+                        ),
+                      ),
+                      builder: (context) {
+                        return Container(
+                          width: double.infinity,
+                          padding: const EdgeInsets.all(16),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    "Reject Leave Request",
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  Spacer(),
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Image.asset(
+                                      "assets/images/Close Icon.png",
+                                      width: 24,
+                                      height: 24,
+                                    ),
+                                  ),
+                                ],
+                              ),
+
+                              SizedBox(height: 20),
+                              Divider(),
+                              SizedBox(height: 24),
+                              Column(
+                                children: [
+                                  Text(
+                                    "Are you sure you want to reject this leave request",
+                                    style: GoogleFonts.inter(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  SizedBox(height: 8),
+                                  Align(
+                                    alignment: AlignmentGeometry.centerStart,
+                                    child: Text(
+                                      "This action cannot be undone",
+                                      style: GoogleFonts.inter(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600,
+                                        color: Color(0xFF64748B),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+
+                              SizedBox(height: 24),
+                              Column(
+                                children: [
+                                  Align(
+                                    alignment: AlignmentGeometry.centerLeft,
+
+                                    child: Text(
+                                      "Remark",
                                       style: GoogleFonts.inter(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w600,
                                       ),
                                     ),
-                                    SizedBox(height: 8),
-                                    Align(
-                                      alignment: AlignmentGeometry.centerStart,
-                                      child: Text(
-                                        "This action cannot be undone",
-                                        style: GoogleFonts.inter(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600,
-                                          color: Color(0xFF64748B),
-                                        ),
+                                  ),
+                                  SizedBox(height: 8),
+                                  TextField(
+                                    minLines: 5,
+                                    maxLines: 8,
+                                    decoration: InputDecoration(
+                                      hintText: "Enter employee name",
+                                      hintStyle: const TextStyle(
+                                        color: Color(0xFF64748B),
+                                        fontSize: 14,
+                                        height: 1.5,
                                       ),
-                                    ),
-                                  ],
-                                ),
+                                      filled: true,
+                                      fillColor: Colors.white,
 
-                                SizedBox(height: 24),
-                                Column(
-                                  children: [
-                                    Align(
-                                      alignment: AlignmentGeometry.centerLeft,
-
-                                      child: Text(
-                                        "Remark",
-                                        style: GoogleFonts.inter(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(height: 8),
-                                    TextField(
-                                      minLines: 5,
-                                      maxLines: 8,
-                                      decoration: InputDecoration(
-                                        hintText: "Enter employee name",
-                                        hintStyle: const TextStyle(
-                                          color: Color(0xFF64748B),
-                                          fontSize: 14,
-                                          height: 1.5,
-                                        ),
-                                        filled: true,
-                                        fillColor: Colors.white,
-
-                                        contentPadding:
-                                            const EdgeInsets.symmetric(
-                                              horizontal: 16,
-                                              vertical: 14,
-                                            ),
-
-                                        enabledBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(
-                                            12,
-                                          ),
-                                          borderSide: const BorderSide(
-                                            color: Color(0xFFE2E8F0),
-                                          ),
-                                        ),
-
-                                        focusedBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(
-                                            12,
-                                          ),
-                                          borderSide: const BorderSide(
-                                            color: Color(0xFFE2E8F0),
-                                            width: 1.5,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(height: 20),
-                                Divider(),
-                                SizedBox(height: 24),
-                                Row(
-                                  children: [
-                                    Expanded(
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                          elevation: 0, // shadow remove
-                                          backgroundColor: const Color(
-                                            0xFFEDE9FE,
-                                          ), // background color
-                                          foregroundColor: const Color(
-                                            0xFF644EE5,
-                                          ), // text color
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(
-                                              12,
-                                            ), // radius
-                                            side: BorderSide
-                                                .none, // border remove
-                                          ),
-                                          padding: const EdgeInsets.symmetric(
+                                      contentPadding:
+                                          const EdgeInsets.symmetric(
+                                            horizontal: 16,
                                             vertical: 14,
                                           ),
-                                        ),
-                                        child: const Text("Cancel"),
-                                      ),
-                                    ),
-                                    SizedBox(width: 12),
-                                    Expanded(
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                          elevation: 0, // shadow remove
-                                          backgroundColor: const Color(
-                                            0xFFDC2626,
-                                          ), // background color
 
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(
-                                              12,
-                                            ), // radius
-                                            side: BorderSide
-                                                .none, // border remove
-                                          ),
-                                          padding: const EdgeInsets.symmetric(
-                                            vertical: 14,
-                                          ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(12),
+                                        borderSide: const BorderSide(
+                                          color: Color(0xFFE2E8F0),
                                         ),
-                                        child: const Text(
-                                          "Yes, Reject",
-                                          style: TextStyle(color: Colors.white),
+                                      ),
+
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(12),
+                                        borderSide: const BorderSide(
+                                          color: Color(0xFFE2E8F0),
+                                          width: 1.5,
                                         ),
                                       ),
                                     ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                      );
-                    },
-                    style: OutlinedButton.styleFrom(
-                      backgroundColor: Color(0xFFFEE2E2),
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      side: const BorderSide(
-                        color: Color(0xFFFEE2E2),
-                        width: 1,
-                      ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 20),
+                              Divider(),
+                              SizedBox(height: 24),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        elevation: 0, // shadow remove
+                                        backgroundColor: const Color(
+                                          0xFFEDE9FE,
+                                        ), // background color
+                                        foregroundColor: const Color(
+                                          0xFF644EE5,
+                                        ), // text color
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            12,
+                                          ), // radius
+                                          side:
+                                              BorderSide.none, // border remove
+                                        ),
+                                        padding: const EdgeInsets.symmetric(
+                                          vertical: 14,
+                                        ),
+                                      ),
+                                      child: const Text("Cancel"),
+                                    ),
+                                  ),
+                                  SizedBox(width: 12),
+                                  Expanded(
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        elevation: 0, // shadow remove
+                                        backgroundColor: const Color(
+                                          0xFFDC2626,
+                                        ), // background color
 
-                      // ✅ RADIUS
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            12,
+                                          ), // radius
+                                          side:
+                                              BorderSide.none, // border remove
+                                        ),
+                                        padding: const EdgeInsets.symmetric(
+                                          vertical: 14,
+                                        ),
+                                      ),
+                                      child: const Text(
+                                        "Yes, Reject",
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    );
+                  },
+                  style: OutlinedButton.styleFrom(
+                    backgroundColor: Color(0xFFFEE2E2),
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    side: const BorderSide(color: Color(0xFFFEE2E2), width: 1),
+
+                    // ✅ RADIUS
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
                     ),
+                  ),
 
-                    child: Text(
-                      "Reject",
-                      style: GoogleFonts.inter(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xFFDC2626),
-                      ),
+                  child: Text(
+                    "Reject",
+                    style: GoogleFonts.inter(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xFFDC2626),
                     ),
                   ),
                 ),
-                SizedBox(width: 12),
-                Expanded(
-                  child: OutlinedButton(
-                    onPressed: () => Navigator.pop(context),
-                    style: OutlinedButton.styleFrom(
-                      backgroundColor: Color(0xFF644EE5),
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      side: const BorderSide(
-                        color: Color(0xFF644EE5),
-                        width: 1,
-                      ),
+              ),
+              SizedBox(width: 12),
+              Expanded(
+                child: OutlinedButton(
+                  onPressed: () => Navigator.pop(context),
+                  style: OutlinedButton.styleFrom(
+                    backgroundColor: Color(0xFF644EE5),
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    side: const BorderSide(color: Color(0xFF644EE5), width: 1),
 
-                      // ✅ RADIUS
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
+                    // ✅ RADIUS
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
                     ),
+                  ),
 
-                    child: Text(
-                      "Approve",
-                      style: GoogleFonts.inter(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                      ),
+                  child: Text(
+                    "Approve",
+                    style: GoogleFonts.inter(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
                     ),
                   ),
                 ),
-              ],
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );

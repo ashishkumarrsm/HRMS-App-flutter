@@ -5,16 +5,16 @@ import 'package:hrms/EmployeeManagment/Data/employee_Requeted_Approved_Rejected_
 import 'package:hrms/EmployeeManagment/employee_Leaves_Detail.dart';
 import 'package:hrms/EmployeeManagment/employss_LeaveCardWidget.dart';
 
-class EmployeeLeaves extends StatefulWidget {
+class EmployeeLeavePage extends StatefulWidget {
   final String employeeId;
 
-  const EmployeeLeaves({super.key, required this.employeeId});
+  const EmployeeLeavePage({super.key, required this.employeeId});
 
   @override
-  State<EmployeeLeaves> createState() => _EmployeeLeavesState();
+  State<EmployeeLeavePage> createState() => _EmployeeLeavePageState();
 }
 
-class _EmployeeLeavesState extends State<EmployeeLeaves>
+class _EmployeeLeavePageState extends State<EmployeeLeavePage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
@@ -56,13 +56,13 @@ class _EmployeeLeavesState extends State<EmployeeLeaves>
                       ],
 
                       Text(
-                        "Leave History",
+                        "Employee’s Leave",
                         style: GoogleFonts.inter(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      const SizedBox(height: 12),
+                      // const SizedBox(height: 12),
                     ],
                   ),
                 ),
@@ -167,7 +167,7 @@ class _EmployeeLeavesState extends State<EmployeeLeaves>
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  record.leaveCategory,
+                  record.employeeName,
                   style: GoogleFonts.inter(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,

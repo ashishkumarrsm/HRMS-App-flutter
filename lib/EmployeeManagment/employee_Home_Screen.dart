@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hrms/Announcement/announcement_Home_Screen.dart';
 import 'package:hrms/EmployeeManagment/employee_Home_Screen_Card.dart';
+import 'package:hrms/LeavesManagment/leace_Home_Screen.dart';
+import 'package:hrms/Shift%20Management/shift_Management_Screen.dart';
 
 class EmployeeHomeScreen extends StatefulWidget {
   const EmployeeHomeScreen({super.key});
@@ -19,11 +22,77 @@ class _EmployeeHomeScreenState extends State<EmployeeHomeScreen> {
       child: Scaffold(
         backgroundColor: Colors.white,
         resizeToAvoidBottomInset: false,
+        drawer: Drawer(
+          backgroundColor: Colors.white,
+          child: ListView(
+            children: [
+              DrawerHeader(
+                child: Row(
+                  children: [
+                    const Text("Menu"),
+                    Spacer(),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Image.asset(
+                        "assets/images/Close Icon.png",
+                        width: 20,
+                        height: 20,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              ListTile(
+                leading: const Icon(Icons.event_note),
+                title: const Text("Leave Home Screen"),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LeaceHomeScreen(),
+                    ),
+                  );
+                },
+              ),
 
+              ListTile(
+                leading: const Icon(Icons.campaign),
+                title: const Text("Announcement Page"),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AnnouncementHomeScreen(),
+                    ),
+                  );
+                },
+              ),
+
+              ListTile(
+                leading: const Icon(Icons.schedule),
+                title: const Text("Shift Management"),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ShiftManagementScreen(),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
         appBar: AppBar(
           backgroundColor: Colors.white,
           surfaceTintColor: Colors.white,
-          title: const Text("Header"),
+          title: Text("Home Screen"),
+
           toolbarHeight: 60,
           shape: const Border(bottom: BorderSide(color: Colors.grey, width: 1)),
         ),
