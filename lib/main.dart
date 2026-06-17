@@ -13,10 +13,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-       
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
-      ),
+      builder: (context, child) {
+        return MediaQuery(
+          // This forces the text scale to always be 1.0
+          data: MediaQuery.of(
+            context,
+          ).copyWith(textScaler: const TextScaler.linear(1.0)),
+          child: child!,
+        );
+      },
+      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
       home: EmployeeHomeScreen(),
     );
   }

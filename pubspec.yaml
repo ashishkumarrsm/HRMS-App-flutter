@@ -54,6 +54,8 @@ dev_dependencies:
   table_calendar: ^3.2.0
   # csv: ^8.0.0
   csv: ^8.0.0
+  # numberpicker: ^2.1.2
+  numberpicker: ^2.1.2
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

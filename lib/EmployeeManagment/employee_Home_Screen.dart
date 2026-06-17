@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hrms/Announcement/announcement_Home_Screen.dart';
+import 'package:hrms/Complaint/complaint_Home_Screen.dart';
 import 'package:hrms/EmployeeManagment/employee_Home_Screen_Card.dart';
 import 'package:hrms/LeavesManagment/leace_Home_Screen.dart';
+import 'package:hrms/Overtime(Admin%20View)/admin_Overtime_HomeScreen.dart';
 import 'package:hrms/Shift%20Management/shift_Management_Screen.dart';
 
 class EmployeeHomeScreen extends StatefulWidget {
@@ -81,6 +83,32 @@ class _EmployeeHomeScreenState extends State<EmployeeHomeScreen> {
                     context,
                     MaterialPageRoute(
                       builder: (context) => ShiftManagementScreen(),
+                    ),
+                  );
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.compare_outlined),
+                title: const Text("Complaint Home Screen"),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ComplaintHomeScreen(),
+                    ),
+                  );
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.admin_panel_settings),
+                title: const Text("Admin Overtime Home screen"),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AdminOvertimeHomescreen(),
                     ),
                   );
                 },

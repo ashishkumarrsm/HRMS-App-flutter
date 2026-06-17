@@ -315,6 +315,7 @@ class _AnnouncementDetailState extends State<AnnouncementDetail> {
                                       style: GoogleFonts.inter(
                                         fontSize: 20,
                                         fontWeight: FontWeight.w600,
+                                        color: Color(0xff334155),
                                       ),
                                     ),
                                     Spacer(),

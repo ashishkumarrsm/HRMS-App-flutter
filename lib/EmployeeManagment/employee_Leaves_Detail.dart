@@ -220,7 +220,7 @@ class _EmployeeLeavesDetailState extends State<EmployeeLeavesDetail> {
                                 children: [
                                   Text(
                                     "Reject Leave Request",
-                                    style: TextStyle(
+                                    style: GoogleFonts.inter(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w600,
                                     ),
