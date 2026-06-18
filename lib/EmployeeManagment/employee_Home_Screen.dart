@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hrms/Announcement/announcement_Home_Screen.dart';
 import 'package:hrms/Complaint/complaint_Home_Screen.dart';
 import 'package:hrms/EmployeeManagment/employee_Home_Screen_Card.dart';
+import 'package:hrms/Employee_Module_All_Screen/leave_Management_Home_Screen.dart';
 import 'package:hrms/LeavesManagment/leace_Home_Screen.dart';
 import 'package:hrms/Overtime(Admin%20View)/admin_Overtime_HomeScreen.dart';
 import 'package:hrms/Shift%20Management/shift_Management_Screen.dart';
@@ -113,6 +114,21 @@ class _EmployeeHomeScreenState extends State<EmployeeHomeScreen> {
                   );
                 },
               ),
+              ListTile(
+                leading: const Icon(Icons.home_max),
+                title: const Text(
+                  "Leave Management Home Screen for Employee Module",
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LeaveManagementHomeScreen(),
+                    ),
+                  );
+                },
+              ),
             ],
           ),
         ),
@@ -147,18 +163,17 @@ class _EmployeeHomeScreenState extends State<EmployeeHomeScreen> {
                     },
                     decoration: InputDecoration(
                       hintText: "Search by name or ID...",
-                      hintStyle: TextStyle(
-                        color: const Color(0xFF334155),
-                        fontFamily: GoogleFonts.poppins(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w400,
-                        ).fontFamily,
+                      hintStyle: GoogleFonts.poppins(
+                        color: Color(0xFF334155),
+                        fontSize: 13,
+                        fontWeight: FontWeight.w400,
                       ),
+
                       prefixIcon: Padding(
                         padding: const EdgeInsets.only(
                           left: 12,
                           bottom: 12,
-                          right: 5,
+                          right: 8,
                           top: 12,
                         ),
                         child: SizedBox(

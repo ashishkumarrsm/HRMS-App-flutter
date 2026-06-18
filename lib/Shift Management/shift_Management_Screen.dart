@@ -42,9 +42,15 @@ class _ShiftManagementScreenState extends State<ShiftManagementScreen>
           elevation: 0,
           toolbarHeight: 60,
           shape: const Border(bottom: BorderSide(color: Color(0xFFE2E8F0))),
-          title: Text(
-            "Shift Management",
-            style: GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.w600),
+          title: Align(
+            alignment: AlignmentGeometry.centerStart,
+            child: Text(
+              "Shift Management",
+              style: GoogleFonts.inter(
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
           ),
         ),
 
@@ -63,7 +69,7 @@ class _ShiftManagementScreenState extends State<ShiftManagementScreen>
               ),
             ),
 
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
 
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -71,12 +77,16 @@ class _ShiftManagementScreenState extends State<ShiftManagementScreen>
                 decoration: InputDecoration(
                   hintText: "Search by name or ID...",
                   hintStyle: GoogleFonts.inter(
-                    color: const Color(0xFF94A3B8),
+                    color: const Color(0xFF334155),
                     fontSize: 14,
                   ),
 
                   prefixIcon: Padding(
-                    padding: const EdgeInsets.all(12),
+                    padding: const EdgeInsets.only(
+                      left: 12,
+                      top: 12,
+                      bottom: 12,
+                    ),
                     child: Image.asset(
                       "assets/images/search-status.png",
                       width: 20,

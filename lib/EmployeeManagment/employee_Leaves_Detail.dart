@@ -67,11 +67,14 @@ class _EmployeeLeavesDetailState extends State<EmployeeLeavesDetail> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(
-          "Leave Details",
-          style: GoogleFonts.inter(
-            fontWeight: FontWeight.w600,
-            color: Colors.black,
+        title: Align(
+          alignment: AlignmentGeometry.centerStart,
+          child: Text(
+            "Leave Details",
+            style: GoogleFonts.inter(
+              fontWeight: FontWeight.w600,
+              color: Colors.black,
+            ),
           ),
         ),
         backgroundColor: Colors.white,
@@ -187,7 +190,7 @@ class _EmployeeLeavesDetailState extends State<EmployeeLeavesDetail> {
             ),
 
             const SizedBox(height: 30),
-            Divider(),
+            // Divider(),
           ],
         ),
       ),
@@ -195,6 +198,9 @@ class _EmployeeLeavesDetailState extends State<EmployeeLeavesDetail> {
       bottomNavigationBar: SafeArea(
         child: Container(
           padding: EdgeInsets.only(top: 16, left: 16, right: 16),
+          decoration: BoxDecoration(
+            border: Border(top: BorderSide(color: Color(0xffE2E8F0), width: 1)),
+          ),
           child: Row(
             children: [
               Expanded(

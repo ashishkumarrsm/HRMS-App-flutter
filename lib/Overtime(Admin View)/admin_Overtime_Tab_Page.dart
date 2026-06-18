@@ -87,6 +87,7 @@ class _AdminOvertimeTabPageState extends State<AdminOvertimeTabPage>
 
               Expanded(
                 child: TabBarView(
+                  physics: const NeverScrollableScrollPhysics(),
                   children: [
                     Center(child: OvertimeListView(statusFilter: "Pending")),
                     Center(child: OvertimeListView(statusFilter: "Approved")),

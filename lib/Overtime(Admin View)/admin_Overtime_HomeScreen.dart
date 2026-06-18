@@ -52,7 +52,12 @@ class _AdminOvertimeHomescreenState extends State<AdminOvertimeHomescreen>
             Align(
               alignment: AlignmentGeometry.centerStart,
               child: Padding(
-                padding: EdgeInsetsGeometry.all(16),
+                padding: EdgeInsetsGeometry.only(
+                  top: 16,
+                  left: 16,
+                  right: 16,
+                  bottom: 8,
+                ),
                 child: Text(
                   "Overtime List",
                   style: GoogleFonts.inter(

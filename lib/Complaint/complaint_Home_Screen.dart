@@ -46,7 +46,12 @@ class _ComplaintHomeScreenState extends State<ComplaintHomeScreen>
             Align(
               alignment: AlignmentGeometry.centerStart,
               child: Padding(
-                padding: EdgeInsetsGeometry.all(16),
+                padding: EdgeInsetsGeometry.only(
+                  top: 16,
+                  bottom: 8,
+                  left: 16,
+                  right: 16,
+                ),
                 child: Text(
                   "Complaint List",
                   style: GoogleFonts.inter(

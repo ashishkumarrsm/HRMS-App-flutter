@@ -184,7 +184,7 @@ class _EmployeeOvertimeTabPageState extends State<EmployeeOvertimeTabPage>
             unselectedLabelColor: const Color(0xFF64748B),
             indicatorColor: const Color(0xFF644EE5),
             indicatorWeight: 3,
-            labelStyle: const TextStyle(
+            labelStyle: GoogleFonts.inter(
               fontSize: 14,
               fontWeight: FontWeight.w600,
             ),

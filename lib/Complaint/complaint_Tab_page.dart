@@ -83,6 +83,7 @@ class _ComplaintTabPageState extends State<ComplaintTabPage>
 
               Expanded(
                 child: TabBarView(
+                  physics: const NeverScrollableScrollPhysics(),
                   children: [
                     Center(child: OvertimeListView(statusFilter: "Pending")),
                     Center(child: OvertimeListView(statusFilter: "Approved")),

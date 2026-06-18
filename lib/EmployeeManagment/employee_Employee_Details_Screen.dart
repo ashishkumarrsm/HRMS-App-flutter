@@ -83,12 +83,15 @@ class _EmployeeEmployeeDetailsScreenState
         surfaceTintColor: Colors.white,
         elevation: 0,
         toolbarHeight: 60,
-        title: Text(
-          "Employee Details",
-          style: GoogleFonts.inter(
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
-            color: Colors.black,
+        title: Align(
+          alignment: AlignmentGeometry.centerStart,
+          child: Text(
+            "Employee Details",
+            style: GoogleFonts.inter(
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+              color: Colors.black,
+            ),
           ),
         ),
         shape: const Border(
@@ -235,7 +238,8 @@ class _EmployeeEmployeeDetailsScreenState
                 ),
 
                 //!=========== Attendance========
-                AttendanceCalendarScreen(),
+                // AttendanceCalendarScreen(),
+                EmployeeAttendanceCalendarScreen(),
 
                 //! ============== Leaves===========
                 EmployeeLeaves(employeeId: widget.employee.id),

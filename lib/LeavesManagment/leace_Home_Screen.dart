@@ -20,7 +20,10 @@ class _LeaceHomeScreenState extends State<LeaceHomeScreen> {
         appBar: AppBar(
           backgroundColor: Colors.white,
           surfaceTintColor: Colors.white,
-          title: Text("Leave Home Screen"),
+          title: Align(
+            alignment: AlignmentGeometry.centerStart,
+            child: Text("Leave Home Screen"),
+          ),
           toolbarHeight: 60,
           shape: const Border(bottom: BorderSide(color: Colors.grey, width: 1)),
         ),
@@ -84,6 +87,7 @@ class _LeaceHomeScreenState extends State<LeaceHomeScreen> {
 
                 Expanded(
                   child: TabBarView(
+                    physics: const NeverScrollableScrollPhysics(),
                     children: [
                       Center(
                         child: EmployeeLeavePage(

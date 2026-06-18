@@ -97,9 +97,12 @@ class _AnnouncementHomeScreenState extends State<AnnouncementHomeScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         surfaceTintColor: Colors.white,
-        title: Text(
-          "Announcement",
-          style: GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.w600),
+        title: Align(
+          alignment: AlignmentGeometry.centerStart,
+          child: Text(
+            "Announcement",
+            style: GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.w600),
+          ),
         ),
         toolbarHeight: 60,
         shape: const Border(bottom: BorderSide(color: Color(0xFFE2E8F0))),
