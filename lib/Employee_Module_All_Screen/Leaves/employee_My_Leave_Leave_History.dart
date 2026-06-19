@@ -174,7 +174,7 @@ class LeaveCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "${data.leaveType}",
+                    data.leaveType,
                     style: GoogleFonts.inter(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
@@ -235,7 +235,7 @@ class LeaveCard extends StatelessWidget {
                             alignment: AlignmentGeometry.centerLeft,
 
                             child: Text(
-                              "${data.leaveType}",
+                              data.leaveType,
                               style: GoogleFonts.inter(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500,
@@ -266,7 +266,7 @@ class LeaveCard extends StatelessWidget {
                             alignment: AlignmentGeometry.centerLeft,
 
                             child: Text(
-                              "${data.startDate}",
+                              data.startDate,
                               style: GoogleFonts.inter(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500,
@@ -305,7 +305,7 @@ class LeaveCard extends StatelessWidget {
                             alignment: AlignmentGeometry.centerLeft,
 
                             child: Text(
-                              "${data.endDate}",
+                              data.endDate,
                               style: GoogleFonts.inter(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500,
@@ -375,7 +375,7 @@ class LeaveCard extends StatelessWidget {
                             alignment: AlignmentGeometry.centerLeft,
 
                             child: Text(
-                              "${data.leaveReason}",
+                              data.leaveReason,
                               style: GoogleFonts.inter(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500,

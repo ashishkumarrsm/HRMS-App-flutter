@@ -14,7 +14,7 @@ class _EmployeeOvertimePageState extends State<EmployeeOvertimePage>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
-  get index => null;
+  Null get index => null;
 
   @override
   void initState() {

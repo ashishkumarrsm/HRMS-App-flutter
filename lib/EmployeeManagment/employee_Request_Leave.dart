@@ -34,6 +34,11 @@ class _EmployeeRequestCompoffLeavePageState
               firstDay: DateTime(2026, 1, 1),
               lastDay: DateTime(2028, 12, 31),
               focusedDay: focusedDay,
+              headerStyle: HeaderStyle(
+                formatButtonVisible: false,
+                titleCentered: true,
+              ),
+
               selectedDayPredicate: (day) {
                 return isSameDay(isFromDate ? fromDate : toDate, day);
               },
@@ -383,7 +388,7 @@ class _EmployeeRequestCompoffLeavePageState
                                     child: Text(
                                       (file == null)
                                           ? "No file Selected "
-                                          : "${file!.name}",
+                                          : file!.name,
                                       overflow: TextOverflow.ellipsis,
                                       style: const TextStyle(fontSize: 14),
                                     ),

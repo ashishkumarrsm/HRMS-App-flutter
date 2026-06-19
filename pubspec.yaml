@@ -56,6 +56,14 @@ dev_dependencies:
   csv: ^8.0.0
   # numberpicker: ^2.1.2
   numberpicker: ^2.1.2
+
+  # flutter_launcher_icons: ^0.14.4
+  flutter_launcher_icons: ^0.14.4
+  
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/Checklist Illustration Woman 1.png"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

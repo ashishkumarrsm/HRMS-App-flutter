@@ -1,32 +1,3 @@
-// import 'package:flutter/material.dart';
-// import 'package:google_fonts/google_fonts.dart';
-
-// class AddAnnouncement extends StatefulWidget {
-//   const AddAnnouncement({super.key});
-
-//   @override
-//   State<AddAnnouncement> createState() => _AddAnnouncementState();
-// }
-
-// class _AddAnnouncementState extends State<AddAnnouncement> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: Colors.white,
-//       appBar: AppBar(
-//         backgroundColor: Colors.white,
-//         shadowColor: Colors.white,
-//         title: Text(
-//           "Add New Announcement",
-//           style: GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.w600),
-//         ),
-//         toolbarHeight: 60,
-//         shape: const Border(bottom: BorderSide(color: Color(0xFFE2E8F0))),
-//       ),
-//     );
-//   }
-// }
-
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -62,6 +33,10 @@ class _AddAnnouncementState extends State<AddAnnouncement> {
               firstDay: DateTime(2026, 1, 1),
               lastDay: DateTime(2028, 12, 31),
               focusedDay: focusedDay,
+              headerStyle: HeaderStyle(
+                formatButtonVisible: false,
+                titleCentered: true,
+              ),
               selectedDayPredicate: (day) {
                 return isSameDay(isFromDate ? fromDate : toDate, day);
               },
@@ -97,8 +72,7 @@ class _AddAnnouncementState extends State<AddAnnouncement> {
             alignment: Alignment.centerLeft,
             child: Text(
               "Request Leave",
-              style: TextStyle(
-                fontFamily: "Inter",
+              style: GoogleFonts.inter(
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
               ),
@@ -107,7 +81,7 @@ class _AddAnnouncementState extends State<AddAnnouncement> {
           backgroundColor: Colors.white,
           surfaceTintColor: Colors.white,
           bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(16),
+            preferredSize: Size.fromHeight(16),
             child: Container(color: Colors.grey.shade300, height: 1),
           ),
         ),
@@ -314,6 +288,11 @@ class _AddAnnouncementState extends State<AddAnnouncement> {
                             maxLines: 5,
                             decoration: InputDecoration(
                               hintText: "Enter announcement message here.",
+                              hintStyle: GoogleFonts.inter(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xff9CA3AF),
+                              ),
                               filled: true,
                               fillColor: Colors.white,
                               contentPadding: const EdgeInsets.symmetric(
@@ -377,7 +356,7 @@ class _AddAnnouncementState extends State<AddAnnouncement> {
                                     child: Text(
                                       (file == null)
                                           ? "No file Selected "
-                                          : "${file!.name}",
+                                          : file!.name,
                                       overflow: TextOverflow.ellipsis,
                                       style: const TextStyle(fontSize: 14),
                                     ),

@@ -47,7 +47,7 @@ class _LeaceHomeScreenState extends State<LeaceHomeScreen> {
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: const Color(0x1A644EE5).withOpacity(0.08),
+                        color: const Color(0x1A644EE5).withValues(alpha: 0.08),
                         blurRadius: 20,
                         offset: const Offset(0, 8),
                       ),

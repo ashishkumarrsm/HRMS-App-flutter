@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hrms/Employee_Module_All_Screen/Holidays/employee_Holidays_Screen.dart';
 import 'package:hrms/Employee_Module_All_Screen/Leaves/employee_My_Leave_Card.dart';
 import 'package:hrms/Employee_Module_All_Screen/Leaves/employee_My_Leave_Leave_History.dart';
+import 'package:hrms/Employee_Module_All_Screen/OverTime/employee_OverTime_Screen.dart';
 import './Data/employee_Leave_Card_Data.dart';
 
 class LeaveManagementHomeScreen extends StatefulWidget {
@@ -62,7 +64,7 @@ class _LeaveManagementHomeScreenState extends State<LeaveManagementHomeScreen>
                 border: Border.all(color: const Color(0xFFE2E8F0)),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
+                    color: Colors.black.withValues(alpha: 0.05),
                     blurRadius: 12,
                     offset: const Offset(0, 4),
                   ),
@@ -99,7 +101,7 @@ class _LeaveManagementHomeScreenState extends State<LeaveManagementHomeScreen>
               child: TabBarView(
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
-                  // ---------------- My Leave Tab ----------------
+                  //* ---------------- My Leave Tab ----------------
                   LayoutBuilder(
                     builder: (context, constraints) {
                       // History ko guaranteed height milegi, cards ki height
@@ -134,8 +136,39 @@ class _LeaveManagementHomeScreenState extends State<LeaveManagementHomeScreen>
                     },
                   ),
 
-                  Center(child: Text("data")),
-                  Center(child: Text("data")),
+                  // *------------------- Overtime tab---------------
+                  LayoutBuilder(
+                    builder: (context, constraints) {
+                      final double historyHeight = constraints.maxHeight * 1;
+                      return CustomScrollView(
+                        slivers: [
+                          SliverToBoxAdapter(
+                            child: SizedBox(
+                              height: historyHeight,
+                              child: EmployeeOvertimeScreen(),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+
+                  // *------------------- Holiday tab---------------
+                  LayoutBuilder(
+                    builder: (context, constraints) {
+                      final double historyHeight = constraints.maxHeight * 1;
+                      return CustomScrollView(
+                        slivers: [
+                          SliverToBoxAdapter(
+                            child: SizedBox(
+                              height: historyHeight,
+                              child: EmployeeHolidaysScreen(),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  ),
                 ],
               ),
             ),

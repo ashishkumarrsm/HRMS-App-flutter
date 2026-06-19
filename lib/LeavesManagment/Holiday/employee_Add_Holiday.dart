@@ -48,6 +48,10 @@ class _EmployeeAddHolidayState extends State<EmployeeAddHoliday> {
               firstDay: DateTime(2026, 1, 1),
               lastDay: DateTime(2028, 12, 31),
               focusedDay: focusedDay,
+              headerStyle: HeaderStyle(
+                formatButtonVisible: false,
+                titleCentered: true,
+              ),
               selectedDayPredicate: (day) {
                 return isSameDay(isFromDate ? fromDate : toDate, day);
               },
@@ -137,7 +141,7 @@ class _EmployeeAddHolidayState extends State<EmployeeAddHoliday> {
                             decoration: InputDecoration(
                               hintText: "Enter New Holiday Name",
                               hintStyle: const TextStyle(
-                                color: Color(0xFF94A3B8),
+                                color: Color(0xff9CA3AF),
                                 fontSize: 14,
                               ),
                               filled: true,
@@ -384,6 +388,9 @@ class _EmployeeAddHolidayState extends State<EmployeeAddHoliday> {
                             maxLines: 5,
                             decoration: InputDecoration(
                               hintText: "e.g. Celebration of the new year.",
+                              hintStyle: GoogleFonts.inter(
+                                color: Color(0xff9CA3AF),
+                              ),
                               filled: true,
                               fillColor: Colors.white,
                               contentPadding: const EdgeInsets.symmetric(

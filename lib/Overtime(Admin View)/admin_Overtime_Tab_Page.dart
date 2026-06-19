@@ -52,7 +52,7 @@ class _AdminOvertimeTabPageState extends State<AdminOvertimeTabPage>
                   border: Border.all(color: const Color(0xFFE2E8F0)),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.05),
+                      color: Colors.black.withValues(alpha: 0.05),
                       blurRadius: 12,
                       offset: const Offset(0, 4),
                     ),
@@ -270,7 +270,7 @@ class _EmployeeCardState extends State<EmployeeCard> {
                     ),
                     SizedBox(width: 10),
                     Text(
-                      "${widget.overtime.employeeName}",
+                      widget.overtime.employeeName,
                       style: GoogleFonts.inter(
                         fontSize: 12,
                         fontWeight: FontWeight.w500,
@@ -297,7 +297,7 @@ class _EmployeeCardState extends State<EmployeeCard> {
                             ? Color(0xFFDCFCE7)
                             : widget.overtime.status == "Rejected"
                             ? Color(0xFFFEE2E2)
-                            : Colors.grey.withOpacity(0.15),
+                            : Colors.grey.withValues(alpha: 0.15),
 
                         borderRadius: BorderRadius.circular(20),
                         border: Border.all(
@@ -353,7 +353,7 @@ class _EmployeeCardState extends State<EmployeeCard> {
                                 ),
                               ),
                               Text(
-                                "${widget.overtime.workDate}",
+                                widget.overtime.workDate,
                                 style: GoogleFonts.inter(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w500,
@@ -376,7 +376,7 @@ class _EmployeeCardState extends State<EmployeeCard> {
                                 ),
                               ),
                               Text(
-                                "${widget.overtime.department}",
+                                widget.overtime.department,
                                 style: GoogleFonts.inter(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w500,
@@ -404,7 +404,7 @@ class _EmployeeCardState extends State<EmployeeCard> {
                                 ),
                               ),
                               Text(
-                                "${widget.overtime.actualWorkHrs}",
+                                widget.overtime.actualWorkHrs,
                                 style: GoogleFonts.inter(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w500,
@@ -427,7 +427,7 @@ class _EmployeeCardState extends State<EmployeeCard> {
                                 ),
                               ),
                               Text(
-                                "${widget.overtime.overtimeRequest}",
+                                widget.overtime.overtimeRequest,
                                 style: GoogleFonts.inter(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w500,
@@ -455,7 +455,7 @@ class _EmployeeCardState extends State<EmployeeCard> {
                                 ),
                               ),
                               Text(
-                                "${widget.overtime.actualOvertime}",
+                                widget.overtime.actualOvertime,
                                 style: GoogleFonts.inter(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w500,
@@ -513,7 +513,7 @@ class _EmployeeCardState extends State<EmployeeCard> {
                                 ),
                               ),
                               Text(
-                                "${widget.overtime.description}",
+                                widget.overtime.description,
                                 style: GoogleFonts.inter(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w500,

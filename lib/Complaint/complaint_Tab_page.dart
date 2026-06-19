@@ -48,7 +48,7 @@ class _ComplaintTabPageState extends State<ComplaintTabPage>
                   border: Border.all(color: const Color(0xFFE2E8F0)),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.05),
+                      color: Colors.black.withValues(alpha: 0.05),
                       blurRadius: 12,
                       offset: const Offset(0, 4),
                     ),
@@ -285,7 +285,7 @@ class _EmployeeCardState extends State<EmployeeCard> {
                     ),
                     SizedBox(width: 10),
                     Text(
-                      "${widget.complaint.employeeName}",
+                      widget.complaint.employeeName,
                       style: GoogleFonts.inter(
                         fontSize: 12,
                         fontWeight: FontWeight.w500,
@@ -312,7 +312,7 @@ class _EmployeeCardState extends State<EmployeeCard> {
                             ? Color(0xFFDCFCE7)
                             : widget.complaint.status == "Rejected"
                             ? Color(0xFFFEE2E2)
-                            : Colors.grey.withOpacity(0.15),
+                            : Colors.grey.withValues(alpha: 0.15),
 
                         borderRadius: BorderRadius.circular(20),
                         border: Border.all(
@@ -368,7 +368,7 @@ class _EmployeeCardState extends State<EmployeeCard> {
                                 ),
                               ),
                               Text(
-                                "${widget.complaint.complaintId}",
+                                widget.complaint.complaintId,
                                 style: GoogleFonts.inter(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w500,
@@ -391,7 +391,7 @@ class _EmployeeCardState extends State<EmployeeCard> {
                                 ),
                               ),
                               Text(
-                                "${widget.complaint.complaintDate}",
+                                widget.complaint.complaintDate,
                                 style: GoogleFonts.inter(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w500,
@@ -419,7 +419,7 @@ class _EmployeeCardState extends State<EmployeeCard> {
                                 ),
                               ),
                               Text(
-                                "${widget.complaint.position}",
+                                widget.complaint.position,
                                 style: GoogleFonts.inter(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w500,
@@ -442,7 +442,7 @@ class _EmployeeCardState extends State<EmployeeCard> {
                                 ),
                               ),
                               Text(
-                                "${widget.complaint.department}",
+                                widget.complaint.department,
                                 style: GoogleFonts.inter(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w500,
@@ -470,7 +470,7 @@ class _EmployeeCardState extends State<EmployeeCard> {
                                 ),
                               ),
                               Text(
-                                "${widget.complaint.description}",
+                                widget.complaint.description,
                                 style: GoogleFonts.inter(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w500,

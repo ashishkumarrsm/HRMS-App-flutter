@@ -1,7 +1,8 @@
-import 'dart:ffi';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 
 class EmployeeMyLeaveLeaveDetailPage extends StatefulWidget {
   final String leaveType;
@@ -40,6 +41,55 @@ class EmployeeMyLeaveLeaveDetailPage extends StatefulWidget {
 
 class _EmployeeMyLeaveLeaveDetailPageState
     extends State<EmployeeMyLeaveLeaveDetailPage> {
+  File? _image;
+  final ImagePicker _picker = ImagePicker();
+
+  Future<void> _pickImage(ImageSource source) async {
+    final XFile? pickedFile = await _picker.pickImage(source: source);
+    if (pickedFile != null) {
+      setState(() {
+        _image = File(pickedFile.path);
+      });
+    }
+  }
+
+  void _showOptions() {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) => SafeArea(
+        child: Wrap(
+          children: [
+            ListTile(
+              leading: const Icon(Icons.camera_alt),
+              title: const Text('Camera'),
+              onTap: () {
+                _pickImage(ImageSource.camera);
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.photo_library),
+              title: const Text('Gallery'),
+              onTap: () {
+                _pickImage(ImageSource.gallery);
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // ✅ FILE SIZE FUNCTION
+  String _getFileSize(File file) {
+    final bytes = file.lengthSync();
+
+    if (bytes < 1024) return "$bytes B";
+    if (bytes < 1024 * 1024) return "${(bytes / 1024).toStringAsFixed(1)} KB";
+    return "${(bytes / (1024 * 1024)).toStringAsFixed(1)} MB";
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,7 +134,7 @@ class _EmployeeMyLeaveLeaveDetailPageState
                     Row(
                       children: [
                         Text(
-                          "${widget.leaveType}",
+                          widget.leaveType,
                           style: GoogleFonts.inter(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
@@ -148,7 +198,7 @@ class _EmployeeMyLeaveLeaveDetailPageState
                     SizedBox(height: 12),
 
                     Text(
-                      "${widget.leaveCategory}",
+                      widget.leaveCategory,
                       style: GoogleFonts.inter(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
@@ -183,7 +233,7 @@ class _EmployeeMyLeaveLeaveDetailPageState
                     SizedBox(height: 12),
 
                     Text(
-                      "${widget.startDate}",
+                      widget.startDate,
                       style: GoogleFonts.inter(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
@@ -218,7 +268,7 @@ class _EmployeeMyLeaveLeaveDetailPageState
                     SizedBox(height: 12),
 
                     Text(
-                      "${widget.endDate}",
+                      widget.endDate,
                       style: GoogleFonts.inter(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
@@ -288,7 +338,7 @@ class _EmployeeMyLeaveLeaveDetailPageState
                     SizedBox(height: 12),
 
                     Text(
-                      "${widget.availableLeave}",
+                      widget.availableLeave,
                       style: GoogleFonts.inter(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
@@ -323,7 +373,7 @@ class _EmployeeMyLeaveLeaveDetailPageState
                     SizedBox(height: 12),
 
                     Text(
-                      "${widget.appliedOn}",
+                      widget.appliedOn,
                       style: GoogleFonts.inter(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
@@ -358,7 +408,7 @@ class _EmployeeMyLeaveLeaveDetailPageState
                     SizedBox(height: 12),
 
                     Text(
-                      "${widget.leaveReason}",
+                      widget.leaveReason,
                       style: GoogleFonts.inter(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
@@ -405,43 +455,126 @@ class _EmployeeMyLeaveLeaveDetailPageState
                         ),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Row(
-                        children: [
-                          Image.asset(
-                            "assets/images/Frame 2147235640.png",
-                            width: 56,
-                            height: 56,
-                          ),
-                          SizedBox(width: 16),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "${widget.documentName}",
-                                style: GoogleFonts.inter(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
-                                  color: Color(0xff1F2937),
-                                ),
-                              ),
+                      child: widget.status.toLowerCase().trim() == "approved"
+                          ? GestureDetector(
+                              onTap: _showOptions,
+                              child: Container(
+                                child: _image != null
+                                    ? Row(
+                                        children: [
+                                          ClipRRect(
+                                            borderRadius: BorderRadius.circular(
+                                              10,
+                                            ),
+                                            child: Image.file(
+                                              _image!,
+                                              height: 60,
+                                              width: 60,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                          const SizedBox(width: 12),
 
-                              SizedBox(height: 4),
-                              Text(
-                                "${widget.documentSize}",
-                                style: GoogleFonts.inter(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                  color: Color(0xff6B7280),
-                                ),
+                                          Expanded(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  _image!.path.split('/').last,
+                                                  maxLines: 1,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: GoogleFonts.inter(
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                                ),
+                                                const SizedBox(height: 6),
+                                                Text(
+                                                  _getFileSize(_image!),
+                                                  style: GoogleFonts.inter(
+                                                    fontSize: 12,
+                                                    color: Colors.grey,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+
+                                          const Icon(
+                                            Icons.edit,
+                                            size: 18,
+                                            color: Colors.grey,
+                                          ),
+                                        ],
+                                      )
+                                    : Row(
+                                        children: [
+                                          Container(
+                                            height: 60,
+                                            width: 60,
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              border: Border.all(
+                                                color: Colors.grey.shade300,
+                                              ),
+                                            ),
+                                            child: const Icon(
+                                              Icons.add_a_photo,
+                                              color: Colors.grey,
+                                            ),
+                                          ),
+                                          const SizedBox(width: 12),
+                                          Text(
+                                            "Tap to upload file",
+                                            style: GoogleFonts.inter(
+                                              color: Colors.grey,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                               ),
-                            ],
-                          ),
-                        ],
-                      ),
+                            )
+                          : Row(
+                              children: [
+                                Image.asset(
+                                  "assets/images/Frame 2147235640.png",
+                                  width: 56,
+                                  height: 56,
+                                ),
+                                SizedBox(width: 16),
+                                Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      widget.documentName,
+                                      style: GoogleFonts.inter(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500,
+                                        color: Color(0xff1F2937),
+                                      ),
+                                    ),
+
+                                    SizedBox(height: 4),
+                                    Text(
+                                      widget.documentSize,
+                                      style: GoogleFonts.inter(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w500,
+                                        color: Color(0xff6B7280),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                     ),
-                    widget.status.trim().toLowerCase() == "approved" ||
-                            widget.status.trim().toLowerCase() == "pending"
+
+                    widget.status.trim().toLowerCase() == "pending"
                         ? SizedBox(height: 120)
                         : Container(),
                   ],
@@ -452,10 +585,14 @@ class _EmployeeMyLeaveLeaveDetailPageState
               //   padding: const EdgeInsets.symmetric(horizontal: 16),
               //   child: Divider(),
               // ),
-              widget.status.trim().toLowerCase() == "approved "
+              widget.status.toLowerCase().trim() == "approved"
                   ? Container(
                       child: Column(
                         children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child: Divider(),
+                          ),
                           // *====== Leave Category===
                           Padding(
                             padding: const EdgeInsets.all(16),
@@ -477,7 +614,7 @@ class _EmployeeMyLeaveLeaveDetailPageState
                                 SizedBox(height: 12),
 
                                 Text(
-                                  "${widget.approvedBy}",
+                                  widget.approvedBy,
                                   style: GoogleFonts.inter(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w500,
@@ -528,7 +665,7 @@ class _EmployeeMyLeaveLeaveDetailPageState
                                     SizedBox(height: 12),
 
                                     Text(
-                                      "${widget.approvedBy}",
+                                      widget.approvedBy,
                                       style: GoogleFonts.inter(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500,
@@ -580,7 +717,7 @@ class _EmployeeMyLeaveLeaveDetailPageState
                                   ),
                                   SizedBox(height: 8),
                                   Text(
-                                    "${widget.leaveReason}",
+                                    widget.leaveReason,
                                     style: GoogleFonts.inter(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500,
