@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hrms/EmployeeManagment/employee_Home_Screen.dart';
+import 'package:hrms/Login&SignIn/employee_Login_Page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
         );
       },
       theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
-      home: EmployeeHomeScreen(),
+      // home: EmployeeHomeScreen(),
+      home: EmployeeLoginPage(),
     );
   }
 }

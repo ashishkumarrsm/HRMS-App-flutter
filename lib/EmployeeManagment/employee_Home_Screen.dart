@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hrms/Announcement/announcement_Home_Screen.dart';
 import 'package:hrms/Complaint/complaint_Home_Screen.dart';
 import 'package:hrms/EmployeeManagment/employee_Home_Screen_Card.dart';
+import 'package:hrms/Employee_Module_All_Screen/ComplaintsScreen/employee_Complaints_Screen.dart';
 import 'package:hrms/Employee_Module_All_Screen/leave_Management_Home_Screen.dart';
 import 'package:hrms/LeavesManagment/leace_Home_Screen.dart';
 import 'package:hrms/Overtime(Admin%20View)/admin_Overtime_HomeScreen.dart';
@@ -125,6 +126,21 @@ class _EmployeeHomeScreenState extends State<EmployeeHomeScreen> {
                     context,
                     MaterialPageRoute(
                       builder: (context) => LeaveManagementHomeScreen(),
+                    ),
+                  );
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.computer),
+                title: const Text(
+                  "Employee Complaints  Home Screen for Employee Module",
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => EmployeeComplaintsScreen(),
                     ),
                   );
                 },
