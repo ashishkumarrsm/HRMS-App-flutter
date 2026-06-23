@@ -1,31 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:hrms/EmployeeManagment/employee_Home_Screen.dart';
 import 'package:hrms/Login&SignIn/employee_Login_Page.dart';
 
+// import 'package:hrms/EmployeeManagment/employee_Home_Screen.dart';
+
+/// main.dart
+///
+/// Entry point. Routes are named so screens can navigate without
+/// direct imports (avoids circular deps).
+///
+/// Named routes:
+///   /login  → EmployeeLoginScreen
+///   /home   → EmployeeHomeScreen  (replace with your actual screen)
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(const HRMSApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class HRMSApp extends StatelessWidget {
+  const HRMSApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      builder: (context, child) {
-        return MediaQuery(
-          // This forces the text scale to always be 1.0
-          data: MediaQuery.of(
-            context,
-          ).copyWith(textScaler: const TextScaler.linear(1.0)),
-          child: child!,
-        );
+      title: 'PMCH HRMS',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF644EE5)),
+        useMaterial3: true,
+      ),
+      initialRoute: '/login',
+      routes: {
+        '/login': (_) => const EmployeeLoginScreen(),
+        // '/home': (_) => EmployeeHomeScreen(),  ← uncomment when ready
       },
-      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
-      // home: EmployeeHomeScreen(),
-      home: EmployeeLoginPage(),
     );
   }
 }

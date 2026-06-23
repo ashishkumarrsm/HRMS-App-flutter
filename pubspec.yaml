@@ -58,7 +58,7 @@ dev_dependencies:
   # numberpicker: ^2.1.2
   numberpicker: ^2.1.2
   # local_auth: ^3.0.1
-  local_auth: ^3.0.1
+  local_auth: ^2.3.0
 
   # flutter_launcher_icons: ^0.14.4
   flutter_launcher_icons: ^0.14.4

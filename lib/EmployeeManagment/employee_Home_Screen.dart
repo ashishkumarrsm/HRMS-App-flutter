@@ -6,8 +6,10 @@ import 'package:hrms/EmployeeManagment/employee_Home_Screen_Card.dart';
 import 'package:hrms/Employee_Module_All_Screen/ComplaintsScreen/employee_Complaints_Screen.dart';
 import 'package:hrms/Employee_Module_All_Screen/leave_Management_Home_Screen.dart';
 import 'package:hrms/LeavesManagment/leace_Home_Screen.dart';
+import 'package:hrms/Login&SignIn/employee_Login_Page.dart'; // ✅ correct import
 import 'package:hrms/Overtime(Admin%20View)/admin_Overtime_HomeScreen.dart';
 import 'package:hrms/Shift%20Management/shift_Management_Screen.dart';
+import '../Service/secure_storage_service.dart';
 
 class EmployeeHomeScreen extends StatefulWidget {
   const EmployeeHomeScreen({super.key});
@@ -17,15 +19,46 @@ class EmployeeHomeScreen extends StatefulWidget {
 }
 
 class _EmployeeHomeScreenState extends State<EmployeeHomeScreen> {
+  String firstName = "";
+
+  @override
+  void initState() {
+    super.initState();
+    getUserData();
+  }
+
+  Future<void> getUserData() async {
+    final name = await SecureStorageService.getFirstName();
+    if (mounted) {
+      setState(() {
+        firstName = name ?? "";
+      });
+    }
+  }
+
+  // ── Logout: get loginId first, then call logout ──────────────────────────
+  Future<void> _logout() async {
+    final loginId = await SecureStorageService.getCurrentLoginId();
+    if (loginId != null) {
+      await SecureStorageService.logout(loginId: loginId);
+    }
+    if (!mounted) return;
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (_) => const EmployeeLoginScreen()),
+      (route) => false, // clear entire stack
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        FocusScope.of(context).unfocus();
-      },
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         backgroundColor: Colors.white,
         resizeToAvoidBottomInset: false,
+
+        // ── Drawer ────────────────────────────────────────────────────────
         drawer: Drawer(
           backgroundColor: Colors.white,
           child: ListView(
@@ -34,11 +67,9 @@ class _EmployeeHomeScreenState extends State<EmployeeHomeScreen> {
                 child: Row(
                   children: [
                     const Text("Menu"),
-                    Spacer(),
+                    const Spacer(),
                     InkWell(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
+                      onTap: () => Navigator.pop(context),
                       child: Image.asset(
                         "assets/images/Close Icon.png",
                         width: 20,
@@ -55,13 +86,10 @@ class _EmployeeHomeScreenState extends State<EmployeeHomeScreen> {
                   Navigator.pop(context);
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => const LeaceHomeScreen(),
-                    ),
+                    MaterialPageRoute(builder: (_) => const LeaceHomeScreen()),
                   );
                 },
               ),
-
               ListTile(
                 leading: const Icon(Icons.campaign),
                 title: const Text("Announcement Page"),
@@ -69,13 +97,10 @@ class _EmployeeHomeScreenState extends State<EmployeeHomeScreen> {
                   Navigator.pop(context);
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => AnnouncementHomeScreen(),
-                    ),
+                    MaterialPageRoute(builder: (_) => AnnouncementHomeScreen()),
                   );
                 },
               ),
-
               ListTile(
                 leading: const Icon(Icons.schedule),
                 title: const Text("Shift Management"),
@@ -83,9 +108,7 @@ class _EmployeeHomeScreenState extends State<EmployeeHomeScreen> {
                   Navigator.pop(context);
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => ShiftManagementScreen(),
-                    ),
+                    MaterialPageRoute(builder: (_) => ShiftManagementScreen()),
                   );
                 },
               ),
@@ -96,9 +119,7 @@ class _EmployeeHomeScreenState extends State<EmployeeHomeScreen> {
                   Navigator.pop(context);
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => ComplaintHomeScreen(),
-                    ),
+                    MaterialPageRoute(builder: (_) => ComplaintHomeScreen()),
                   );
                 },
               ),
@@ -110,7 +131,7 @@ class _EmployeeHomeScreenState extends State<EmployeeHomeScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => AdminOvertimeHomescreen(),
+                      builder: (_) => AdminOvertimeHomescreen(),
                     ),
                   );
                 },
@@ -125,7 +146,7 @@ class _EmployeeHomeScreenState extends State<EmployeeHomeScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => LeaveManagementHomeScreen(),
+                      builder: (_) => LeaveManagementHomeScreen(),
                     ),
                   );
                 },
@@ -133,14 +154,14 @@ class _EmployeeHomeScreenState extends State<EmployeeHomeScreen> {
               ListTile(
                 leading: const Icon(Icons.computer),
                 title: const Text(
-                  "Employee Complaints  Home Screen for Employee Module",
+                  "Employee Complaints Home Screen for Employee Module",
                 ),
                 onTap: () {
                   Navigator.pop(context);
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => EmployeeComplaintsScreen(),
+                      builder: (_) => EmployeeComplaintsScreen(),
                     ),
                   );
                 },
@@ -148,15 +169,27 @@ class _EmployeeHomeScreenState extends State<EmployeeHomeScreen> {
             ],
           ),
         ),
+
+        // ── AppBar ────────────────────────────────────────────────────────
         appBar: AppBar(
           backgroundColor: Colors.white,
           surfaceTintColor: Colors.white,
-          title: Text("Home Screen"),
-
+          title: Row(
+            children: [
+              Text("Hello $firstName"),
+              const SizedBox(width: 12),
+              const Spacer(),
+              InkWell(
+                onTap: _logout, // ✅ calls _logout() which fetches loginId first
+                child: const Icon(Icons.logout),
+              ),
+            ],
+          ),
           toolbarHeight: 60,
           shape: const Border(bottom: BorderSide(color: Colors.grey, width: 1)),
         ),
 
+        // ── Body ──────────────────────────────────────────────────────────
         body: SafeArea(
           child: SingleChildScrollView(
             keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
@@ -174,17 +207,14 @@ class _EmployeeHomeScreenState extends State<EmployeeHomeScreen> {
                   ),
                   child: TextField(
                     textInputAction: TextInputAction.done,
-                    onSubmitted: (_) {
-                      FocusScope.of(context).unfocus();
-                    },
+                    onSubmitted: (_) => FocusScope.of(context).unfocus(),
                     decoration: InputDecoration(
                       hintText: "Search by name or ID...",
                       hintStyle: GoogleFonts.poppins(
-                        color: Color(0xFF334155),
+                        color: const Color(0xFF334155),
                         fontSize: 13,
                         fontWeight: FontWeight.w400,
                       ),
-
                       prefixIcon: Padding(
                         padding: const EdgeInsets.only(
                           left: 12,
@@ -215,15 +245,14 @@ class _EmployeeHomeScreenState extends State<EmployeeHomeScreen> {
                     ),
                   ),
                 ),
-
                 const EmployeeHomeScreenCard(),
-
                 const SizedBox(height: 20),
               ],
             ),
           ),
         ),
 
+        // ── Bottom Bar ────────────────────────────────────────────────────
         bottomNavigationBar: SafeArea(
           child: Container(
             padding: const EdgeInsets.all(16),
@@ -251,9 +280,7 @@ class _EmployeeHomeScreenState extends State<EmployeeHomeScreen> {
                     child: const Text("Upload CSV"),
                   ),
                 ),
-
                 const SizedBox(width: 12),
-
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {},
