@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hrms/EmployeeManagment/employee_Home_Screen.dart';
 import 'package:http/http.dart' as http;
 
 import '../Service/secure_storage_service.dart';
@@ -23,6 +24,9 @@ import '../Service/no_internet_screen.dart';
 ///   • App resume → re-verify biometric (handled via AppLifecycleObserver in main)
 ///   • Token expired → handled by API response, re-login required
 ///   • Biometric cancel/fail → stay on login screen, show error
+///
+///
+///
 class EmployeeLoginScreen extends StatefulWidget {
   const EmployeeLoginScreen({super.key});
 
@@ -97,7 +101,7 @@ class _EmployeeLoginScreenState extends State<EmployeeLoginScreen>
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              'No internet connection. Please connect to log in.',
+              'No internet connection. Please connect to log in.......',
               style: GoogleFonts.inter(fontSize: 13),
             ),
             backgroundColor: const Color(0xFFEF4444),
@@ -111,8 +115,9 @@ class _EmployeeLoginScreenState extends State<EmployeeLoginScreen>
     final primaryId = await SecureStorageService.getPrimaryBiometricLoginId();
     String? primaryFirstName;
     if (primaryId != null) {
-      primaryFirstName =
-          await SecureStorageService.getFirstNameForLoginId(primaryId);
+      primaryFirstName = await SecureStorageService.getFirstNameForLoginId(
+        primaryId,
+      );
       // Verify biometric is still enrolled on device (Case 1 — finger removed)
       final enrolled = await _bioService.isAvailableAndEnrolled();
       if (!enrolled) {
@@ -140,8 +145,7 @@ class _EmployeeLoginScreenState extends State<EmployeeLoginScreen>
       setState(() {
         _primaryBiometricLoginId = primaryId;
         _primaryBiometricFirstName = primaryFirstName;
-        _showBiometricButton =
-            primaryId != null && primaryFirstName != null;
+        _showBiometricButton = primaryId != null && primaryFirstName != null;
       });
     }
   }
@@ -206,9 +210,8 @@ class _EmployeeLoginScreenState extends State<EmployeeLoginScreen>
         );
 
         // Case 2 — if THIS account had invalidated biometric, reset it now
-        final wasInvalidated = await SecureStorageService.isBiometricInvalidated(
-          loginId: loginId,
-        );
+        final wasInvalidated =
+            await SecureStorageService.isBiometricInvalidated(loginId: loginId);
 
         final biometricAsked = await SecureStorageService.isBiometricAsked(
           loginId: loginId,
@@ -219,10 +222,7 @@ class _EmployeeLoginScreenState extends State<EmployeeLoginScreen>
           //   • Never asked before, OR
           //   • Was invalidated (Case 2) → ask again
           if (!biometricAsked || wasInvalidated) {
-            _showBiometricSetupDialog(
-              loginId: loginId,
-              firstName: firstName,
-            );
+            _showBiometricSetupDialog(loginId: loginId, firstName: firstName);
           } else {
             _goHome();
           }
@@ -371,15 +371,22 @@ class _EmployeeLoginScreenState extends State<EmployeeLoginScreen>
         // Case 4 — verify the token is still on this device
         final token = await SecureStorageService.getToken();
         if (token == null) {
-          _showSnack('Session expired. Please login with your ID.', isError: true);
+          _showSnack(
+            'Session expired. Please login with your ID.',
+            isError: true,
+          );
           setState(() => _showBiometricButton = false);
           return;
         }
 
         // Case 6 — biometric login always logs in the PRIMARY account
         // Load that account's user data back into storage
-        final firstName = await SecureStorageService.getFirstNameForLoginId(loginId);
-        final lastName = await SecureStorageService.getLastNameForLoginId(loginId);
+        final firstName = await SecureStorageService.getFirstNameForLoginId(
+          loginId,
+        );
+        final lastName = await SecureStorageService.getLastNameForLoginId(
+          loginId,
+        );
         if (firstName != null && lastName != null) {
           await SecureStorageService.saveUserData(
             firstName: firstName,
@@ -416,10 +423,7 @@ class _EmployeeLoginScreenState extends State<EmployeeLoginScreen>
         break;
 
       case BiometricResult.lockedOut:
-        _showSnack(
-          'Too many attempts. Try again in a moment.',
-          isError: true,
-        );
+        _showSnack('Too many attempts. Try again in a moment.', isError: true);
         break;
 
       case BiometricResult.cancelled:
@@ -427,7 +431,10 @@ class _EmployeeLoginScreenState extends State<EmployeeLoginScreen>
         break;
 
       default:
-        _showSnack('Biometric failed. Please login with your ID.', isError: true);
+        _showSnack(
+          'Biometric failed. Please login with your ID.',
+          isError: true,
+        );
     }
   }
 
@@ -494,8 +501,11 @@ class _EmployeeLoginScreenState extends State<EmployeeLoginScreen>
 
   void _goHome() {
     if (!mounted) return;
-    Navigator.pushReplacementNamed(context, '/home');
-    // or: Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => EmployeeHomeScreen()));
+    // Navigator.pushReplacementNamed(context, '/home');
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (_) => EmployeeHomeScreen()),
+    );
   }
 
   void _showSnack(String message, {bool isError = false}) {
@@ -588,8 +598,9 @@ class _EmployeeLoginScreenState extends State<EmployeeLoginScreen>
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(14),
                       ),
-                      disabledBackgroundColor:
-                          const Color(0xFF644EE5).withOpacity(0.6),
+                      disabledBackgroundColor: const Color(
+                        0xFF644EE5,
+                      ).withOpacity(0.6),
                     ),
                     child: _isLoading
                         ? const SizedBox(
@@ -668,13 +679,13 @@ class _EmployeeLoginScreenState extends State<EmployeeLoginScreen>
   // ─── Reusable Widgets ──────────────────────────────────────────────────────
 
   Widget _label(String text) => Text(
-        text,
-        style: GoogleFonts.inter(
-          fontSize: 13,
-          fontWeight: FontWeight.w600,
-          color: const Color(0xFF475569),
-        ),
-      );
+    text,
+    style: GoogleFonts.inter(
+      fontSize: 13,
+      fontWeight: FontWeight.w600,
+      color: const Color(0xFF475569),
+    ),
+  );
 
   Widget _buildTextField({
     required TextEditingController controller,
@@ -686,10 +697,7 @@ class _EmployeeLoginScreenState extends State<EmployeeLoginScreen>
     return TextField(
       controller: controller,
       obscureText: obscure,
-      style: GoogleFonts.inter(
-        fontSize: 14,
-        color: const Color(0xFF1E293B),
-      ),
+      style: GoogleFonts.inter(fontSize: 14, color: const Color(0xFF1E293B)),
       decoration: InputDecoration(
         hintText: hint,
         hintStyle: GoogleFonts.inter(

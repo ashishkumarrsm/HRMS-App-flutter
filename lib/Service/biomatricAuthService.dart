@@ -23,6 +23,8 @@ class BiometricAuthService {
   /// Returns true only if the device has hardware AND at least one
   /// fingerprint / face is enrolled.
   /// Use this to decide whether to show the biometric button at all (Case 1).
+   
+   
   Future<bool> isAvailableAndEnrolled() async {
     try {
       final canCheck = await _localAuth.canCheckBiometrics;
@@ -47,11 +49,11 @@ class BiometricAuthService {
 
       final success = await _localAuth.authenticate(
         localizedReason: 'Please verify your identity',
-        // options: const AuthenticationOptions(
-        //   biometricOnly: true,
-        //   stickyAuth: true, // keep prompt alive if app goes to background
-        //   useErrorDialogs: true,
-        // ),
+        options: const AuthenticationOptions(
+          biometricOnly: true,
+          stickyAuth: true, // keep prompt alive if app goes to background
+          useErrorDialogs: true,
+        ),
       );
       return success ? BiometricResult.success : BiometricResult.failure;
     } on PlatformException catch (e) {

@@ -61,12 +61,17 @@ dev_dependencies:
   local_auth: ^2.3.0
 
   # flutter_launcher_icons: ^0.14.4
-  flutter_launcher_icons: ^0.14.4
-  
-flutter_launcher_icons:
-  android: true
+
+  flutter_launcher_icons: "^0.14.4"
+
+flutter_icons:
+  android: "launcher_icon"
   ios: true
-  image_path: "assets/images/Checklist Illustration Woman 1.png"
+  image_path: "assets/icon/Frame 863.png" # Ensure this is your new 1024x1024 file
+  adaptive_icon_background: "#ffffff"  # Set a background color to fill the square
+  adaptive_icon_foreground: "assets/icon/Frame 863.png"
+  min_sdk_android: 21
+  remove_alpha_ios: true               # Ensures iOS icons have no transparency   
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

@@ -68,6 +68,6 @@
 	</array>
 
 	<key>NSFaceIDUsageDescription</key>
-    <string>User Biometric Authantication </string>
+    <string>User Biometric  face  Authantication  </string>
 </dict>
 </plist>
