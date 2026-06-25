@@ -27,7 +27,38 @@ class _EmployeeComplaintsScreenState extends State<EmployeeComplaintsScreen> {
     final data = getFilteredData(status);
 
     if (data.isEmpty) {
-      return const Center(child: Text("No Complaints Found"));
+      return Center(
+        child: Center(
+          child: Column(
+            children: [
+              Image.asset(
+                "assets/images/Checklist Illustration Woman 1.png",
+                width: 236,
+                height: 200,
+              ),
+              SizedBox(height: 24),
+              Text(
+                "No Complaints Found",
+                style: GoogleFonts.inter(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xff1E293B),
+                ),
+              ),
+              SizedBox(height: 12),
+              Text(
+                "You haven't raised any complaints yet. Your submitted issues will appear here once created.",
+                style: GoogleFonts.inter(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xff64748B),
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        ),
+      );
     }
 
     return ListView.builder(

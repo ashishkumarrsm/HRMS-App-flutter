@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
+import 'package:dotted_border/dotted_border.dart';
 
 class EmployeeRaiseComplaints extends StatefulWidget {
   const EmployeeRaiseComplaints({super.key});
@@ -80,30 +81,138 @@ class _EmployeeRaiseComplaintsState extends State<EmployeeRaiseComplaints> {
         InkWell(
           onTap: showImagePicker,
           borderRadius: BorderRadius.circular(12),
-          child: Container(
-            height: 160,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              border: Border.all(color: const Color(0xffCBD5E1)),
-              borderRadius: BorderRadius.circular(12),
+          child: DottedBorder(
+            options: RoundedRectDottedBorderOptions(
+              radius: const Radius.circular(12),
+              strokeWidth: 2,
+              padding: EdgeInsets.zero,
+              color: const Color(0xff644EE5),
             ),
-            child: selectedImage != null
-                ? ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
-                    child: Image.file(selectedImage!, fit: BoxFit.cover),
-                  )
-                : Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        "assets/images/Upload.png",
-                        width: 48,
-                        height: 48,
-                      ),
-                      const SizedBox(height: 8),
-                      Text("Tap to upload image", style: GoogleFonts.inter()),
-                    ],
-                  ),
+            child: Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: selectedImage != null
+                  ? Row(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.file(
+                            selectedImage!,
+                            width: 48,
+                            height: 48,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+
+                        const SizedBox(width: 12),
+
+                        Expanded(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                selectedImage!.path.split('/').last,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: GoogleFonts.inter(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: const Color(0xff1F2937),
+                                ),
+                              ),
+
+                              const SizedBox(height: 4),
+
+                              Text(
+                                "${(selectedImage!.lengthSync() / 1024).toStringAsFixed(1)} KB",
+                                style: GoogleFonts.inter(
+                                  fontSize: 12,
+                                  color: const Color(0xff64748B),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+
+                        IconButton(
+                          onPressed: showImagePicker,
+                          icon: const Icon(
+                            Icons.edit_outlined,
+                            color: Color(0xff644EE5),
+                          ),
+                        ),
+                      ],
+                    )
+                  : Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Image.asset(
+                          "assets/images/Upload.png",
+                          width: 48,
+                          height: 48,
+                        ),
+
+                        const SizedBox(height: 8),
+
+                        Text(
+                          "Drag & drop area to upload PDF, JPG, JPEG, PNG",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.inter(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: const Color(0xff1F2937),
+                          ),
+                        ),
+
+                        const SizedBox(height: 4),
+
+                        Text(
+                          "Maximum File Size is 1 MB",
+                          style: GoogleFonts.inter(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: const Color(0xff64748B),
+                          ),
+                        ),
+
+                        const SizedBox(height: 12),
+
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 12,
+                          ),
+                          decoration: BoxDecoration(
+                            color: const Color(0xff644EE5),
+                            borderRadius: BorderRadius.circular(24),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Image.asset(
+                                "assets/images/Upload (1).png",
+                                width: 20,
+                                height: 20,
+                              ),
+                              const SizedBox(width: 8),
+                              Text(
+                                "Choose File",
+                                style: GoogleFonts.inter(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  color: const Color(0xffF8FAFC),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+            ),
           ),
         ),
       ],

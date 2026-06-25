@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hrms/Employee_Module_All_Screen/ComplaintsScreen/employee_Edit_Complaints_Page.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
+import 'package:dotted_border/dotted_border.dart';
 
 class EmployeeRaiseComplaintsViewDetail extends StatefulWidget {
   final String id;
@@ -95,83 +96,138 @@ class _EmployeeRaiseComplaintsViewDetailState
         selectedImage == null
             ? InkWell(
                 onTap: showImagePicker,
-                child: Container(
-                  // height: 194,
-                  padding: EdgeInsets.all(16),
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: const Color(0xffCBD5E1)),
-                    borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(12),
+                child: DottedBorder(
+                  options: RoundedRectDottedBorderOptions(
+                    radius: const Radius.circular(12),
+                    strokeWidth: 2,
+                    padding: EdgeInsets.zero,
+                    color: const Color(0xff644EE5),
                   ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        "assets/images/Upload.png",
-                        width: 48,
-                        height: 48,
-                      ),
-                      const SizedBox(height: 8),
-                      Container(
-                        width: 325,
-                        alignment: Alignment.center,
-                        child: Column(
-                          children: [
-                            Text(
-                              "Drag & drop area to upload PDF, JPG, JPEG, PNG",
-                              style: GoogleFonts.inter(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
-                                color: Color(0xff1F2937),
+                  child: Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: selectedImage != null
+                        ? Row(
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(8),
+                                child: Image.file(
+                                  selectedImage!,
+                                  width: 48,
+                                  height: 48,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
-                              textAlign: TextAlign.center,
-                            ),
-                            SizedBox(height: 4),
-                            Text(
-                              "Maximum File Size is 1 MB",
-                              style: GoogleFonts.inter(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xff6B7280),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 12),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 12,
-                        ),
-                        decoration: BoxDecoration(
-                          color: const Color(0xff644EE5),
-                          border: Border.all(color: const Color(0xff644EE5)),
-                          borderRadius: BorderRadius.circular(24),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Image.asset(
-                              "assets/images/Upload (1).png", // apni image
-                              width: 20,
-                              height: 20,
-                            ),
 
-                            const SizedBox(width: 8),
+                              const SizedBox(width: 12),
 
-                            Text(
-                              "Choose File",
-                              style: GoogleFonts.inter(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
-                                color: const Color(0xffF8FAFC),
+                              Expanded(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      selectedImage!.path.split('/').last,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: GoogleFonts.inter(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w600,
+                                        color: const Color(0xff1F2937),
+                                      ),
+                                    ),
+
+                                    const SizedBox(height: 4),
+
+                                    Text(
+                                      "${(selectedImage!.lengthSync() / 1024).toStringAsFixed(1)} KB",
+                                      style: GoogleFonts.inter(
+                                        fontSize: 12,
+                                        color: const Color(0xff64748B),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+
+                              IconButton(
+                                onPressed: showImagePicker,
+                                icon: const Icon(
+                                  Icons.edit_outlined,
+                                  color: Color(0xff644EE5),
+                                ),
+                              ),
+                            ],
+                          )
+                        : Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Image.asset(
+                                "assets/images/Upload.png",
+                                width: 48,
+                                height: 48,
+                              ),
+
+                              const SizedBox(height: 8),
+
+                              Text(
+                                "Drag & drop area to upload PDF, JPG, JPEG, PNG",
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.inter(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  color: const Color(0xff1F2937),
+                                ),
+                              ),
+
+                              const SizedBox(height: 4),
+
+                              Text(
+                                "Maximum File Size is 1 MB",
+                                style: GoogleFonts.inter(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  color: const Color(0xff64748B),
+                                ),
+                              ),
+
+                              const SizedBox(height: 12),
+
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                  vertical: 12,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: const Color(0xff644EE5),
+                                  borderRadius: BorderRadius.circular(24),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Image.asset(
+                                      "assets/images/Upload (1).png",
+                                      width: 20,
+                                      height: 20,
+                                    ),
+                                    const SizedBox(width: 8),
+                                    Text(
+                                      "Choose File",
+                                      style: GoogleFonts.inter(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500,
+                                        color: const Color(0xffF8FAFC),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                   ),
                 ),
               )

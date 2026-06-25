@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hrms/Announcement/announcement_Home_Screen.dart';
 import 'package:hrms/Complaint/complaint_Home_Screen.dart';
 import 'package:hrms/EmployeeManagment/employee_Home_Screen_Card.dart';
+import 'package:hrms/Employee_Module_All_Screen/Account/employee_Account_Main_Screen.dart';
+import 'package:hrms/Employee_Module_All_Screen/Account/employee_Account_Notification.dart';
 import 'package:hrms/Employee_Module_All_Screen/ComplaintsScreen/employee_Complaints_Screen.dart';
 import 'package:hrms/Employee_Module_All_Screen/leave_Management_Home_Screen.dart';
 import 'package:hrms/LeavesManagment/leace_Home_Screen.dart';
@@ -166,6 +168,19 @@ class _EmployeeHomeScreenState extends State<EmployeeHomeScreen> {
                   );
                 },
               ),
+              ListTile(
+                leading: const Icon(Icons.account_box_outlined),
+                title: const Text("Employee Account Main Screen"),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => EmployeeAccountMainScreen(),
+                    ),
+                  );
+                },
+              ),
             ],
           ),
         ),
@@ -180,8 +195,15 @@ class _EmployeeHomeScreenState extends State<EmployeeHomeScreen> {
               const SizedBox(width: 12),
               const Spacer(),
               InkWell(
-                onTap: _logout, // ✅ calls _logout() which fetches loginId first
-                child: const Icon(Icons.logout),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => EmployeeAccountNotification(),
+                    ),
+                  );
+                }, // ✅ calls _logout() which fetches loginId first
+                child: const Icon(Icons.notifications_none_rounded),
               ),
             ],
           ),

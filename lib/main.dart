@@ -60,7 +60,7 @@ class HRMSApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'PMCH HRMS',
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: true,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF644EE5)),
         useMaterial3: true,

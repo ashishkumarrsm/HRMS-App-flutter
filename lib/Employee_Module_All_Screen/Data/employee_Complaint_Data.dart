@@ -52,31 +52,31 @@ class ComplaintModel {
 
 final List<Map<String, dynamic>> complaintData = [
   // ================= PENDING =================
-  {
-    "id": "CMP1231",
-    "status": "Pending",
-    "date": "10 Aug 2025",
-    "department": "Hostel Management",
-    "description":
-        "The fan in my hostel room is not working properly. It makes a loud noise and stops frequently during the night.",
-    "image": "assets/images/complaint1.jpg",
-    "imageName": "fan_issue.jpg",
-    "imageSize": "1.5 MB",
-    "remarks": "",
-  },
+  // {
+  //   "id": "CMP1231",
+  //   "status": "Pending",
+  //   "date": "10 Aug 2025",
+  //   "department": "Hostel Management",
+  //   "description":
+  //       "The fan in my hostel room is not working properly. It makes a loud noise and stops frequently during the night.",
+  //   "image": "assets/images/complaint1.jpg",
+  //   "imageName": "fan_issue.jpg",
+  //   "imageSize": "1.5 MB",
+  //   "remarks": "",
+  // },
 
-  {
-    "id": "CMP1232",
-    "status": "Pending",
-    "date": "11 Aug 2025",
-    "department": "Maintenance",
-    "description":
-        "The washroom tap is leaking continuously and water is being wasted. Kindly fix it as soon as possible.",
-    "image": "assets/images/complaint2.jpg",
-    "imageName": "tap_leak.jpg",
-    "imageSize": "2 MB",
-    "remarks": "",
-  },
+  // {
+  //   "id": "CMP1232",
+  //   "status": "Pending",
+  //   "date": "11 Aug 2025",
+  //   "department": "Maintenance",
+  //   "description":
+  //       "The washroom tap is leaking continuously and water is being wasted. Kindly fix it as soon as possible.",
+  //   "image": "assets/images/complaint2.jpg",
+  //   "imageName": "tap_leak.jpg",
+  //   "imageSize": "2 MB",
+  //   "remarks": "",
+  // },
 
   // ================= RESOLVED =================
   {
