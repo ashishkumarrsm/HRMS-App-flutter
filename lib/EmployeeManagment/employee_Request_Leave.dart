@@ -1,5 +1,6 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -84,8 +85,8 @@ class _EmployeeRequestCompoffLeavePageState
             alignment: Alignment.centerLeft,
             child: Text(
               "Request Leave",
-              style: TextStyle(
-                fontFamily: "Inter",
+              style: GoogleFonts.inter(
+                color: Color(0xff1F2937),
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
               ),
@@ -114,10 +115,9 @@ class _EmployeeRequestCompoffLeavePageState
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
+                          Text(
                             "Leave Category",
-                            style: TextStyle(
-                              fontFamily: "Inter",
+                            style: GoogleFonts.inter(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
                               color: Color(0xFF27272A),
@@ -200,11 +200,11 @@ class _EmployeeRequestCompoffLeavePageState
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      const Text(
+                                      Text(
                                         "From Date",
-                                        style: TextStyle(
+                                        style: GoogleFonts.inter(
                                           fontWeight: FontWeight.w500,
-                                          fontFamily: "Inter",
+                                          color: Color(0xff1E293B),
                                           fontSize: 14,
                                         ),
                                       ),
@@ -251,11 +251,11 @@ class _EmployeeRequestCompoffLeavePageState
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      const Text(
+                                      Text(
                                         "To Date",
-                                        style: TextStyle(
+                                        style: GoogleFonts.inter(
                                           fontWeight: FontWeight.w500,
-                                          fontFamily: "Inter",
+                                          color: Color(0xff1E293B),
                                           fontSize: 14,
                                         ),
                                       ),
@@ -306,11 +306,11 @@ class _EmployeeRequestCompoffLeavePageState
                           //   ! Leave Reason column
                           Align(
                             alignment: Alignment.centerLeft,
-                            child: const Text(
+                            child: Text(
                               "Leave Reason",
-                              style: TextStyle(
+                              style: GoogleFonts.inter(
                                 fontWeight: FontWeight.w500,
-                                fontFamily: "Inter",
+                                color: Color(0xff1E293B),
                                 fontSize: 14,
                               ),
                             ),
@@ -358,11 +358,11 @@ class _EmployeeRequestCompoffLeavePageState
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
+                          Text(
                             "Attachment (optional)",
-                            style: TextStyle(
+                            style: GoogleFonts.inter(
                               fontWeight: FontWeight.w500,
-                              fontFamily: "Inter",
+                              color: Color(0xff1E293B),
                               fontSize: 14,
                             ),
                           ),

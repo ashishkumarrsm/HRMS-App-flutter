@@ -91,10 +91,10 @@ class _ShiftEditState extends State<ShiftEdit> {
         children: [
           Text(
             title,
-            style: const TextStyle(
+            style: GoogleFonts.inter(
               fontSize: 16,
               fontWeight: FontWeight.w600,
-              backgroundColor: Colors.white,
+              color: Color(0xff27272A),
             ),
           ),
           const SizedBox(height: 10),
@@ -172,9 +172,13 @@ class _ShiftEditState extends State<ShiftEdit> {
                 crossAxisAlignment: CrossAxisAlignment.start,
 
                 children: [
-                  const Text(
+                  Text(
                     "Employee",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                    style: GoogleFonts.inter(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xff27272A),
+                    ),
                   ),
                   const SizedBox(height: 10),
                   TextFormField(
@@ -211,9 +215,13 @@ class _ShiftEditState extends State<ShiftEdit> {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  const Text(
+                  Text(
                     "Shift Type",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                    style: GoogleFonts.inter(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xff27272A),
+                    ),
                   ),
                   const SizedBox(height: 10),
 
@@ -232,9 +240,13 @@ class _ShiftEditState extends State<ShiftEdit> {
 
                   const SizedBox(height: 24),
 
-                  const Text(
+                  Text(
                     "Department",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                    style: GoogleFonts.inter(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xff27272A),
+                    ),
                   ),
                   const SizedBox(height: 10),
 

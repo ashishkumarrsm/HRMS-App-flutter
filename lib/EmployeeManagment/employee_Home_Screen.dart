@@ -54,165 +54,161 @@ class _EmployeeHomeScreenState extends State<EmployeeHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
+    return Scaffold(
+      backgroundColor: Colors.white,
+      resizeToAvoidBottomInset: false,
+
+      // ── Drawer ────────────────────────────────────────────────────────
+      drawer: Drawer(
         backgroundColor: Colors.white,
-        resizeToAvoidBottomInset: false,
-
-        // ── Drawer ────────────────────────────────────────────────────────
-        drawer: Drawer(
-          backgroundColor: Colors.white,
-          child: ListView(
-            children: [
-              DrawerHeader(
-                child: Row(
-                  children: [
-                    const Text("Menu"),
-                    const Spacer(),
-                    InkWell(
-                      onTap: () => Navigator.pop(context),
-                      child: Image.asset(
-                        "assets/images/Close Icon.png",
-                        width: 20,
-                        height: 20,
-                      ),
+        child: ListView(
+          children: [
+            DrawerHeader(
+              child: Row(
+                children: [
+                  const Text("Menu"),
+                  const Spacer(),
+                  InkWell(
+                    onTap: () => Navigator.pop(context),
+                    child: Image.asset(
+                      "assets/images/Close Icon.png",
+                      width: 20,
+                      height: 20,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              ListTile(
-                leading: const Icon(Icons.event_note),
-                title: const Text("Leave Home Screen"),
-                onTap: () {
-                  Navigator.pop(context);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => const LeaceHomeScreen()),
-                  );
-                },
+            ),
+            ListTile(
+              leading: const Icon(Icons.event_note),
+              title: const Text("Leave Home Screen"),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const LeaceHomeScreen()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.campaign),
+              title: const Text("Announcement Page"),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => AnnouncementHomeScreen()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.schedule),
+              title: const Text("Shift Management"),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => ShiftManagementScreen()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.compare_outlined),
+              title: const Text("Complaint Home Screen"),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => ComplaintHomeScreen()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.admin_panel_settings),
+              title: const Text("Admin Overtime Home screen"),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => AdminOvertimeHomescreen()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.home_max),
+              title: const Text(
+                "Leave Management Home Screen for Employee Module",
               ),
-              ListTile(
-                leading: const Icon(Icons.campaign),
-                title: const Text("Announcement Page"),
-                onTap: () {
-                  Navigator.pop(context);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => AnnouncementHomeScreen()),
-                  );
-                },
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => LeaveManagementHomeScreen(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.computer),
+              title: const Text(
+                "Employee Complaints Home Screen for Employee Module",
               ),
-              ListTile(
-                leading: const Icon(Icons.schedule),
-                title: const Text("Shift Management"),
-                onTap: () {
-                  Navigator.pop(context);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => ShiftManagementScreen()),
-                  );
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.compare_outlined),
-                title: const Text("Complaint Home Screen"),
-                onTap: () {
-                  Navigator.pop(context);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => ComplaintHomeScreen()),
-                  );
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.admin_panel_settings),
-                title: const Text("Admin Overtime Home screen"),
-                onTap: () {
-                  Navigator.pop(context);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => AdminOvertimeHomescreen(),
-                    ),
-                  );
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.home_max),
-                title: const Text(
-                  "Leave Management Home Screen for Employee Module",
-                ),
-                onTap: () {
-                  Navigator.pop(context);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => LeaveManagementHomeScreen(),
-                    ),
-                  );
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.computer),
-                title: const Text(
-                  "Employee Complaints Home Screen for Employee Module",
-                ),
-                onTap: () {
-                  Navigator.pop(context);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => EmployeeComplaintsScreen(),
-                    ),
-                  );
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.account_box_outlined),
-                title: const Text("Employee Account Main Screen"),
-                onTap: () {
-                  Navigator.pop(context);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => EmployeeAccountMainScreen(),
-                    ),
-                  );
-                },
-              ),
-            ],
-          ),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => EmployeeComplaintsScreen()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.account_box_outlined),
+              title: const Text("Employee Account Main Screen"),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => EmployeeAccountMainScreen(),
+                  ),
+                );
+              },
+            ),
+          ],
         ),
+      ),
 
-        // ── AppBar ────────────────────────────────────────────────────────
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          surfaceTintColor: Colors.white,
-          title: Row(
-            children: [
-              Text("Hello $firstName"),
-              const SizedBox(width: 12),
-              const Spacer(),
-              InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => EmployeeAccountNotification(),
-                    ),
-                  );
-                }, // ✅ calls _logout() which fetches loginId first
-                child: const Icon(Icons.notifications_none_rounded),
-              ),
-            ],
-          ),
-          toolbarHeight: 60,
-          shape: const Border(bottom: BorderSide(color: Colors.grey, width: 1)),
+      // ── AppBar ────────────────────────────────────────────────────────
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        surfaceTintColor: Colors.white,
+        title: Row(
+          children: [
+            Text("Hello $firstName"),
+            const SizedBox(width: 12),
+            const Spacer(),
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => EmployeeAccountNotification(),
+                  ),
+                );
+              }, // ✅ calls _logout() which fetches loginId first
+              child: const Icon(Icons.notifications_none_rounded),
+            ),
+          ],
         ),
+        toolbarHeight: 60,
+        shape: const Border(bottom: BorderSide(color: Colors.grey, width: 1)),
+      ),
 
-        // ── Body ──────────────────────────────────────────────────────────
-        body: SafeArea(
+      // ── Body ──────────────────────────────────────────────────────────
+      body: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: SafeArea(
           child: SingleChildScrollView(
             keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             padding: EdgeInsets.only(
@@ -229,7 +225,7 @@ class _EmployeeHomeScreenState extends State<EmployeeHomeScreen> {
                   ),
                   child: TextField(
                     textInputAction: TextInputAction.done,
-                    onSubmitted: (_) => FocusScope.of(context).unfocus(),
+                    // onSubmitted: (_) => FocusScope.of(context).unfocus(),
                     decoration: InputDecoration(
                       hintText: "Search by name or ID...",
                       hintStyle: GoogleFonts.poppins(
@@ -273,56 +269,56 @@ class _EmployeeHomeScreenState extends State<EmployeeHomeScreen> {
             ),
           ),
         ),
+      ),
 
-        // ── Bottom Bar ────────────────────────────────────────────────────
-        bottomNavigationBar: SafeArea(
-          child: Container(
-            padding: const EdgeInsets.all(16),
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              border: Border(top: BorderSide(color: Color(0xFFE5E7EB))),
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      elevation: 0,
-                      backgroundColor: const Color(0xFFE0DCFA),
-                      foregroundColor: const Color(0xFF644EE5),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 12,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
+      // ── Bottom Bar ────────────────────────────────────────────────────
+      bottomNavigationBar: SafeArea(
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            border: Border(top: BorderSide(color: Color(0xFFE5E7EB))),
+          ),
+          child: Row(
+            children: [
+              Expanded(
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0,
+                    backgroundColor: const Color(0xFFE0DCFA),
+                    foregroundColor: const Color(0xFF644EE5),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 12,
                     ),
-                    child: const Text("Upload CSV"),
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      elevation: 0,
-                      backgroundColor: const Color(0xFF644EE5),
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 12,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                    child: const Text("Export CSV"),
                   ),
+                  child: const Text("Upload CSV"),
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0,
+                    backgroundColor: const Color(0xFF644EE5),
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 12,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  child: const Text("Export CSV"),
+                ),
+              ),
+            ],
           ),
         ),
       ),

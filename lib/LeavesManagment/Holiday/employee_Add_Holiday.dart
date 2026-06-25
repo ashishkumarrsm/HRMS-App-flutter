@@ -96,11 +96,11 @@ class _EmployeeAddHolidayState extends State<EmployeeAddHoliday> {
           title: Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              "Request Leave",
-              style: TextStyle(
-                fontFamily: "Inter",
+              "Add Holiday",
+              style: GoogleFonts.inter(
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
+                color: Color(0xff27272A),
               ),
             ),
           ),
@@ -132,6 +132,7 @@ class _EmployeeAddHolidayState extends State<EmployeeAddHoliday> {
                             style: GoogleFonts.inter(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
+                              color: Color(0xff27272A),
                             ),
                           ),
 
@@ -141,7 +142,7 @@ class _EmployeeAddHolidayState extends State<EmployeeAddHoliday> {
                             decoration: InputDecoration(
                               hintText: "Enter New Holiday Name",
                               hintStyle: const TextStyle(
-                                color: Color(0xff9CA3AF),
+                                // color: Color(0xff9CA3AF),
                                 fontSize: 14,
                               ),
                               filled: true,
@@ -177,13 +178,12 @@ class _EmployeeAddHolidayState extends State<EmployeeAddHoliday> {
                           ),
 
                           const SizedBox(height: 8),
-                          const Text(
+                          Text(
                             "Category",
-                            style: TextStyle(
-                              fontFamily: "Inter",
+                            style: GoogleFonts.inter(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: Color(0xFF27272A),
+                              color: Color(0xff27272A),
                             ),
                           ),
 
@@ -194,6 +194,7 @@ class _EmployeeAddHolidayState extends State<EmployeeAddHoliday> {
                             selectedTrailingIcon: const SizedBox.shrink(),
                             width: MediaQuery.of(context).size.width - 32,
                             hintText: "Select Catagory",
+
                             menuStyle: MenuStyle(
                               backgroundColor: WidgetStatePropertyAll(
                                 Colors.white,
@@ -263,12 +264,12 @@ class _EmployeeAddHolidayState extends State<EmployeeAddHoliday> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      const Text(
+                                      Text(
                                         "Start Date*",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontFamily: "Inter",
+                                        style: GoogleFonts.inter(
                                           fontSize: 14,
+                                          fontWeight: FontWeight.w500,
+                                          color: Color(0xff27272A),
                                         ),
                                       ),
                                       const SizedBox(height: 8),
@@ -314,12 +315,12 @@ class _EmployeeAddHolidayState extends State<EmployeeAddHoliday> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      const Text(
+                                      Text(
                                         "End Date*",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontFamily: "Inter",
+                                        style: GoogleFonts.inter(
                                           fontSize: 14,
+                                          fontWeight: FontWeight.w500,
+                                          color: Color(0xff27272A),
                                         ),
                                       ),
                                       const SizedBox(height: 8),
@@ -369,12 +370,12 @@ class _EmployeeAddHolidayState extends State<EmployeeAddHoliday> {
                           //   ! Leave Reason column
                           Align(
                             alignment: Alignment.centerLeft,
-                            child: const Text(
+                            child: Text(
                               "Description*",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontFamily: "Inter",
+                              style: GoogleFonts.inter(
                                 fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xff27272A),
                               ),
                             ),
                           ),
@@ -389,7 +390,7 @@ class _EmployeeAddHolidayState extends State<EmployeeAddHoliday> {
                             decoration: InputDecoration(
                               hintText: "e.g. Celebration of the new year.",
                               hintStyle: GoogleFonts.inter(
-                                color: Color(0xff9CA3AF),
+                                // color: Color(0xff9CA3AF),
                               ),
                               filled: true,
                               fillColor: Colors.white,

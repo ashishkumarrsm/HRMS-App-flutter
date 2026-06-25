@@ -71,10 +71,11 @@ class _AddAnnouncementState extends State<AddAnnouncement> {
           title: Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              "Request Leave",
+              "Add New Announcement",
               style: GoogleFonts.inter(
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
+                color: Color(0xff1F2937),
               ),
             ),
           ),
@@ -112,7 +113,7 @@ class _AddAnnouncementState extends State<AddAnnouncement> {
                           SizedBox(height: 8),
                           TextField(
                             decoration: InputDecoration(
-                              hintText: "Enter announcement title",
+                              hintText: "Enter subject",
                               hintStyle: GoogleFonts.inter(
                                 color: const Color(0xFF94A3B8),
                                 fontSize: 14,
@@ -163,12 +164,11 @@ class _AddAnnouncementState extends State<AddAnnouncement> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      const Text(
+                                      Text(
                                         "Start Date*",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontFamily: "Inter",
+                                        style: GoogleFonts.inter(
                                           fontSize: 14,
+                                          fontWeight: FontWeight.w500,
                                         ),
                                       ),
                                       const SizedBox(height: 8),
@@ -214,12 +214,11 @@ class _AddAnnouncementState extends State<AddAnnouncement> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      const Text(
+                                      Text(
                                         "End Date*",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontFamily: "Inter",
+                                        style: GoogleFonts.inter(
                                           fontSize: 14,
+                                          fontWeight: FontWeight.w500,
                                         ),
                                       ),
                                       const SizedBox(height: 8),
@@ -269,12 +268,11 @@ class _AddAnnouncementState extends State<AddAnnouncement> {
                           //   ! Leave Reason column
                           Align(
                             alignment: Alignment.centerLeft,
-                            child: const Text(
+                            child: Text(
                               "Message*",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontFamily: "Inter",
+                              style: GoogleFonts.inter(
                                 fontSize: 14,
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
                           ),
@@ -326,12 +324,11 @@ class _AddAnnouncementState extends State<AddAnnouncement> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
+                          Text(
                             "Attachment (optional)",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontFamily: "Inter",
+                            style: GoogleFonts.inter(
                               fontSize: 14,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
 
@@ -412,13 +409,11 @@ class _AddAnnouncementState extends State<AddAnnouncement> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
+                          Text(
                             "Status",
-                            style: TextStyle(
-                              fontFamily: "Inter",
+                            style: GoogleFonts.inter(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: Color(0xFF27272A),
                             ),
                           ),
 

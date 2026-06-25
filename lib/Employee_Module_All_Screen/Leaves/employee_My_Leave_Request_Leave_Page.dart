@@ -1,5 +1,6 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -83,8 +84,7 @@ class _EmployeeMyLeaveRequestLeavePageState
             alignment: Alignment.centerLeft,
             child: Text(
               "Request Leave",
-              style: TextStyle(
-                fontFamily: "Inter",
+              style: GoogleFonts.inter(
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
               ),

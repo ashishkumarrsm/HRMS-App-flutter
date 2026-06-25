@@ -716,190 +716,224 @@ class _AdminOvertimeDetailsState extends State<AdminOvertimeDetails>
                               ),
                             ),
                             builder: (context) {
-                              return Container(
-                                width: double.infinity,
-                                padding: const EdgeInsets.all(16),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "Reject Complaint Request",
-                                          style: GoogleFonts.inter(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                        Spacer(),
-                                        InkWell(
-                                          onTap: () {
-                                            Navigator.pop(context);
-                                          },
-                                          child: Image.asset(
-                                            "assets/images/Close Icon.png",
-                                            width: 24,
-                                            height: 24,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-
-                                    SizedBox(height: 16),
-                                    Divider(),
-                                    SizedBox(height: 24),
-                                    Column(
-                                      children: [
-                                        Text(
-                                          "Are you sure you want to reject this leave request",
-                                          style: GoogleFonts.inter(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                        SizedBox(height: 8),
-                                        Align(
-                                          alignment:
-                                              AlignmentGeometry.centerStart,
-                                          child: Text(
-                                            "This action cannot be undone",
-                                            style: GoogleFonts.inter(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w500,
-                                              color: Color(0xFF64748B),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-
-                                    SizedBox(height: 24),
-                                    Column(
-                                      children: [
-                                        Align(
-                                          alignment:
-                                              AlignmentGeometry.centerLeft,
-
-                                          child: Text(
-                                            "Remark",
-                                            style: GoogleFonts.inter(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(height: 8),
-                                        TextField(
-                                          minLines: 5,
-                                          maxLines: 8,
-                                          decoration: InputDecoration(
-                                            hintText: "Enter employee name",
-                                            hintStyle: const TextStyle(
-                                              color: Color(0xFF64748B),
-                                              fontSize: 14,
-                                              height: 1.5,
-                                            ),
-                                            filled: true,
-                                            fillColor: Colors.white,
-
-                                            contentPadding:
-                                                const EdgeInsets.symmetric(
-                                                  horizontal: 16,
-                                                  vertical: 14,
+                              return GestureDetector(
+                                onTap: () => FocusScope.of(context).unfocus(),
+                                child: AnimatedPadding(
+                                  duration: const Duration(milliseconds: 200),
+                                  curve: Curves.easeOut,
+                                  padding: EdgeInsets.only(
+                                    bottom: MediaQuery.of(
+                                      context,
+                                    ).viewInsets.bottom,
+                                  ),
+                                  child: SingleChildScrollView(
+                                    child: Container(
+                                      width: double.infinity,
+                                      padding: const EdgeInsets.all(16),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Text(
+                                                "Reject Complaint Request",
+                                                style: GoogleFonts.inter(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w500,
                                                 ),
-
-                                            enabledBorder: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(12),
-                                              borderSide: const BorderSide(
-                                                color: Color(0xFFE2E8F0),
                                               ),
-                                            ),
-
-                                            focusedBorder: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(12),
-                                              borderSide: const BorderSide(
-                                                color: Color(0xFFE2E8F0),
-                                                width: 1.5,
+                                              Spacer(),
+                                              InkWell(
+                                                onTap: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Image.asset(
+                                                  "assets/images/Close Icon.png",
+                                                  width: 24,
+                                                  height: 24,
+                                                ),
                                               ),
-                                            ),
+                                            ],
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(height: 20),
-                                    Divider(),
-                                    SizedBox(height: 24),
-                                    Row(
-                                      children: [
-                                        Expanded(
-                                          child: ElevatedButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                            style: ElevatedButton.styleFrom(
-                                              elevation: 0, // shadow remove
-                                              backgroundColor: const Color(
-                                                0xFFEDE9FE,
-                                              ), // background color
-                                              foregroundColor: const Color(
-                                                0xFF644EE5,
-                                              ), // text color
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                      12,
-                                                    ), // radius
-                                                side: BorderSide
-                                                    .none, // border remove
+
+                                          SizedBox(height: 16),
+                                          Divider(),
+                                          SizedBox(height: 24),
+                                          Column(
+                                            children: [
+                                              Text(
+                                                "Are you sure you want to reject this leave request",
+                                                style: GoogleFonts.inter(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
                                               ),
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                    vertical: 14,
+                                              SizedBox(height: 8),
+                                              Align(
+                                                alignment: AlignmentGeometry
+                                                    .centerStart,
+                                                child: Text(
+                                                  "This action cannot be undone",
+                                                  style: GoogleFonts.inter(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Color(0xFF64748B),
                                                   ),
-                                            ),
-                                            child: const Text("Cancel"),
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                        ),
-                                        SizedBox(width: 12),
-                                        Expanded(
-                                          child: ElevatedButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                            style: ElevatedButton.styleFrom(
-                                              elevation: 0, // shadow remove
-                                              backgroundColor: const Color(
-                                                0xFFDC2626,
-                                              ), // background color
 
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                      12,
-                                                    ), // radius
-                                                side: BorderSide
-                                                    .none, // border remove
-                                              ),
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                    vertical: 14,
+                                          SizedBox(height: 24),
+                                          Column(
+                                            children: [
+                                              Align(
+                                                alignment: AlignmentGeometry
+                                                    .centerLeft,
+
+                                                child: Text(
+                                                  "Remark",
+                                                  style: GoogleFonts.inter(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w600,
                                                   ),
-                                            ),
-                                            child: const Text(
-                                              "Yes, Reject",
-                                              style: TextStyle(
-                                                color: Colors.white,
+                                                ),
                                               ),
-                                            ),
+                                              SizedBox(height: 8),
+                                              TextField(
+                                                minLines: 5,
+                                                maxLines: 8,
+                                                decoration: InputDecoration(
+                                                  hintText:
+                                                      "Enter employee name",
+                                                  hintStyle: const TextStyle(
+                                                    color: Color(0xFF64748B),
+                                                    fontSize: 14,
+                                                    height: 1.5,
+                                                  ),
+                                                  filled: true,
+                                                  fillColor: Colors.white,
+
+                                                  contentPadding:
+                                                      const EdgeInsets.symmetric(
+                                                        horizontal: 16,
+                                                        vertical: 14,
+                                                      ),
+
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                              12,
+                                                            ),
+                                                        borderSide:
+                                                            const BorderSide(
+                                                              color: Color(
+                                                                0xFFE2E8F0,
+                                                              ),
+                                                            ),
+                                                      ),
+
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                              12,
+                                                            ),
+                                                        borderSide:
+                                                            const BorderSide(
+                                                              color: Color(
+                                                                0xFFE2E8F0,
+                                                              ),
+                                                              width: 1.5,
+                                                            ),
+                                                      ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                        ),
-                                      ],
+                                          SizedBox(height: 20),
+                                          Divider(),
+                                          SizedBox(height: 24),
+                                          Row(
+                                            children: [
+                                              Expanded(
+                                                child: ElevatedButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  style: ElevatedButton.styleFrom(
+                                                    elevation:
+                                                        0, // shadow remove
+                                                    backgroundColor:
+                                                        const Color(
+                                                          0xFFEDE9FE,
+                                                        ), // background color
+                                                    foregroundColor:
+                                                        const Color(
+                                                          0xFF644EE5,
+                                                        ), // text color
+                                                    shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                            12,
+                                                          ), // radius
+                                                      side: BorderSide
+                                                          .none, // border remove
+                                                    ),
+                                                    padding:
+                                                        const EdgeInsets.symmetric(
+                                                          vertical: 14,
+                                                        ),
+                                                  ),
+                                                  child: const Text("Cancel"),
+                                                ),
+                                              ),
+                                              SizedBox(width: 12),
+                                              Expanded(
+                                                child: ElevatedButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  style: ElevatedButton.styleFrom(
+                                                    elevation:
+                                                        0, // shadow remove
+                                                    backgroundColor:
+                                                        const Color(
+                                                          0xFFDC2626,
+                                                        ), // background color
+
+                                                    shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                            12,
+                                                          ), // radius
+                                                      side: BorderSide
+                                                          .none, // border remove
+                                                    ),
+                                                    padding:
+                                                        const EdgeInsets.symmetric(
+                                                          vertical: 14,
+                                                        ),
+                                                  ),
+                                                  child: const Text(
+                                                    "Yes, Reject",
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ],
+                                  ),
                                 ),
                               );
                             },
@@ -938,167 +972,199 @@ class _AdminOvertimeDetailsState extends State<AdminOvertimeDetails>
                               ),
                             ),
                             builder: (context) {
-                              return Container(
-                                width: double.infinity,
-                                padding: const EdgeInsets.all(16),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Align(
-                                          alignment:
-                                              AlignmentGeometry.centerStart,
+                              return GestureDetector(
+                                onTap: () => FocusScope.of(context).unfocus(),
+                                child: AnimatedPadding(
+                                  duration: const Duration(milliseconds: 200),
+                                  curve: Curves.easeOut,
+                                  padding: EdgeInsets.only(
+                                    bottom: MediaQuery.of(
+                                      context,
+                                    ).viewInsets.bottom,
+                                  ),
+                                  child: SingleChildScrollView(
+                                    child: Container(
+                                      width: double.infinity,
+                                      padding: const EdgeInsets.all(16),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Align(
+                                                alignment: AlignmentGeometry
+                                                    .centerStart,
 
-                                          child: Text(
-                                            "Add Complaint Remarks",
-                                            style: TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          ),
-                                        ),
-                                        Spacer(),
-                                        InkWell(
-                                          onTap: () {
-                                            Navigator.pop(context);
-                                          },
-                                          child: Image.asset(
-                                            "assets/images/Close Icon.png",
-                                            width: 24,
-                                            height: 24,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Divider(),
-                                    SizedBox(height: 24),
-                                    Column(
-                                      children: [
-                                        Align(
-                                          alignment:
-                                              AlignmentGeometry.centerLeft,
-
-                                          child: Text(
-                                            "Remark",
-                                            style: GoogleFonts.inter(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(height: 8),
-                                        TextField(
-                                          minLines: 5,
-                                          maxLines: 8,
-                                          decoration: InputDecoration(
-                                            hintText: "Enter employee name",
-                                            hintStyle: const TextStyle(
-                                              color: Color(0xFF64748B),
-                                              fontSize: 14,
-                                              height: 1.5,
-                                            ),
-                                            filled: true,
-                                            fillColor: Colors.white,
-
-                                            contentPadding:
-                                                const EdgeInsets.symmetric(
-                                                  horizontal: 16,
-                                                  vertical: 14,
+                                                child: Text(
+                                                  "Add Complaint Remarks",
+                                                  style: TextStyle(
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
                                                 ),
-
-                                            enabledBorder: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(12),
-                                              borderSide: const BorderSide(
-                                                color: Color(0xFFE2E8F0),
                                               ),
-                                            ),
-
-                                            focusedBorder: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(12),
-                                              borderSide: const BorderSide(
-                                                color: Color(0xFFE2E8F0),
-                                                width: 1.5,
+                                              Spacer(),
+                                              InkWell(
+                                                onTap: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Image.asset(
+                                                  "assets/images/Close Icon.png",
+                                                  width: 24,
+                                                  height: 24,
+                                                ),
                                               ),
-                                            ),
+                                            ],
                                           ),
-                                        ),
-                                      ],
-                                    ),
+                                          Divider(),
+                                          SizedBox(height: 24),
+                                          Column(
+                                            children: [
+                                              Align(
+                                                alignment: AlignmentGeometry
+                                                    .centerLeft,
 
-                                    SizedBox(height: 24),
-                                    Divider(),
-                                    SizedBox(height: 16),
-                                    Row(
-                                      children: [
-                                        Expanded(
-                                          child: ElevatedButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                            style: ElevatedButton.styleFrom(
-                                              elevation: 0, // shadow remove
-                                              backgroundColor: const Color(
-                                                0xFFEDE9FE,
-                                              ), // background color
-                                              foregroundColor: const Color(
-                                                0xFF644EE5,
-                                              ), // text color
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                      12,
-                                                    ), // radius
-                                                side: BorderSide
-                                                    .none, // border remove
-                                              ),
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                    vertical: 14,
+                                                child: Text(
+                                                  "Remark",
+                                                  style: GoogleFonts.inter(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w600,
                                                   ),
-                                            ),
-                                            child: const Text("Cancel"),
-                                          ),
-                                        ),
-                                        SizedBox(width: 12),
-                                        Expanded(
-                                          child: ElevatedButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                            style: ElevatedButton.styleFrom(
-                                              elevation: 0, // shadow remove
-                                              backgroundColor: const Color(
-                                                0xFF644EE5,
-                                              ), // background color
-
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                      12,
-                                                    ), // radius
-                                                side: BorderSide
-                                                    .none, // border remove
+                                                ),
                                               ),
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                    vertical: 14,
+                                              SizedBox(height: 8),
+                                              TextField(
+                                                minLines: 5,
+                                                maxLines: 8,
+                                                decoration: InputDecoration(
+                                                  hintText:
+                                                      "Enter employee name",
+                                                  hintStyle: const TextStyle(
+                                                    color: Color(0xFF64748B),
+                                                    fontSize: 14,
+                                                    height: 1.5,
                                                   ),
-                                            ),
-                                            child: const Text(
-                                              "Submit",
-                                              style: TextStyle(
-                                                color: Colors.white,
+                                                  filled: true,
+                                                  fillColor: Colors.white,
+
+                                                  contentPadding:
+                                                      const EdgeInsets.symmetric(
+                                                        horizontal: 16,
+                                                        vertical: 14,
+                                                      ),
+
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                              12,
+                                                            ),
+                                                        borderSide:
+                                                            const BorderSide(
+                                                              color: Color(
+                                                                0xFFE2E8F0,
+                                                              ),
+                                                            ),
+                                                      ),
+
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                              12,
+                                                            ),
+                                                        borderSide:
+                                                            const BorderSide(
+                                                              color: Color(
+                                                                0xFFE2E8F0,
+                                                              ),
+                                                              width: 1.5,
+                                                            ),
+                                                      ),
+                                                ),
                                               ),
-                                            ),
+                                            ],
                                           ),
-                                        ),
-                                      ],
+
+                                          SizedBox(height: 24),
+                                          Divider(),
+                                          SizedBox(height: 16),
+                                          Row(
+                                            children: [
+                                              Expanded(
+                                                child: ElevatedButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  style: ElevatedButton.styleFrom(
+                                                    elevation:
+                                                        0, // shadow remove
+                                                    backgroundColor:
+                                                        const Color(
+                                                          0xFFEDE9FE,
+                                                        ), // background color
+                                                    foregroundColor:
+                                                        const Color(
+                                                          0xFF644EE5,
+                                                        ), // text color
+                                                    shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                            12,
+                                                          ), // radius
+                                                      side: BorderSide
+                                                          .none, // border remove
+                                                    ),
+                                                    padding:
+                                                        const EdgeInsets.symmetric(
+                                                          vertical: 14,
+                                                        ),
+                                                  ),
+                                                  child: const Text("Cancel"),
+                                                ),
+                                              ),
+                                              SizedBox(width: 12),
+                                              Expanded(
+                                                child: ElevatedButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  style: ElevatedButton.styleFrom(
+                                                    elevation:
+                                                        0, // shadow remove
+                                                    backgroundColor:
+                                                        const Color(
+                                                          0xFF644EE5,
+                                                        ), // background color
+
+                                                    shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                            12,
+                                                          ), // radius
+                                                      side: BorderSide
+                                                          .none, // border remove
+                                                    ),
+                                                    padding:
+                                                        const EdgeInsets.symmetric(
+                                                          vertical: 14,
+                                                        ),
+                                                  ),
+                                                  child: const Text(
+                                                    "Submit",
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(height: 16),
+                                        ],
+                                      ),
                                     ),
-                                    SizedBox(height: 16),
-                                  ],
+                                  ),
                                 ),
                               );
                             },

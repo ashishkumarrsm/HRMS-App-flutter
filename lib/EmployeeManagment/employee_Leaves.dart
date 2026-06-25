@@ -54,7 +54,7 @@ class _EmployeeLeavesState extends State<EmployeeLeaves>
                         LeaveCard(leave: leave),
                         const SizedBox(height: 16),
                       ],
-
+   
                       Text(
                         "Leave History",
                         style: GoogleFonts.inter(
@@ -234,13 +234,18 @@ class _EmployeeLeavesState extends State<EmployeeLeaves>
           label,
           style: GoogleFonts.inter(
             fontSize: 12,
-            color: const Color(0xFFA1A1AA),
+            color: const Color(0xff64748B),
+            fontWeight: FontWeight.w400,
           ),
         ),
         const SizedBox(height: 4),
         Text(
           value,
-          style: GoogleFonts.inter(fontSize: 14, fontWeight: FontWeight.w500),
+          style: GoogleFonts.inter(
+            fontSize: 12,
+            fontWeight: FontWeight.w500,
+            color: const Color(0xff1E293B),
+          ),
         ),
       ],
     );

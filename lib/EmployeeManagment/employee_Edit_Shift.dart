@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class EmployeeEditshift extends StatefulWidget {
   const EmployeeEditshift({super.key});
@@ -89,10 +90,10 @@ class _EmployeeEditshiftState extends State<EmployeeEditshift> {
         children: [
           Text(
             title,
-            style: const TextStyle(
+            style: GoogleFonts.inter(
               fontSize: 16,
               fontWeight: FontWeight.w600,
-              backgroundColor: Colors.white,
+              color: Color(0xff27272A),
             ),
           ),
           const SizedBox(height: 10),
@@ -170,9 +171,13 @@ class _EmployeeEditshiftState extends State<EmployeeEditshift> {
                 crossAxisAlignment: CrossAxisAlignment.start,
 
                 children: [
-                  const Text(
+                  Text(
                     "Shift Type",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                    style: GoogleFonts.inter(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xff27272A),
+                    ),
                   ),
                   const SizedBox(height: 10),
 
@@ -191,9 +196,13 @@ class _EmployeeEditshiftState extends State<EmployeeEditshift> {
 
                   const SizedBox(height: 24),
 
-                  const Text(
+                  Text(
                     "Department",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                    style: GoogleFonts.inter(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xff27272A),
+                    ),
                   ),
                   const SizedBox(height: 10),
 

@@ -26,7 +26,7 @@ class EmployeeHomeScreenCard extends StatelessWidget {
               if (isKeyboardOpen) {
                 FocusScope.of(context).unfocus();
 
-                await Future.delayed(const Duration(milliseconds: 300));
+                await Future.delayed(const Duration(milliseconds: 100));
               }
               Navigator.push(
                 context,
