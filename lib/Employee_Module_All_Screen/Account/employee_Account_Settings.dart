@@ -50,11 +50,6 @@ class _EmployeeAccountSettingsState extends State<EmployeeAccountSettings> {
                     final bool isSelected = selectedTheme == theme;
 
                     // Icon per theme
-                    final Map<String, IconData> themeIcons = {
-                      "System Default": Icons.settings_suggest_outlined,
-                      "Light": Icons.light_mode_outlined,
-                      "Dark": Icons.dark_mode_outlined,
-                    };
 
                     return GestureDetector(
                       onTap: () {
