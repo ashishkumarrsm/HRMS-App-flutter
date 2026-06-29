@@ -8,7 +8,7 @@ import 'package:hrms/Employee_Module_All_Screen/Account/employee_Account_Notific
 import 'package:hrms/Employee_Module_All_Screen/ComplaintsScreen/employee_Complaints_Screen.dart';
 import 'package:hrms/Employee_Module_All_Screen/leave_Management_Home_Screen.dart';
 import 'package:hrms/LeavesManagment/leace_Home_Screen.dart';
-import 'package:hrms/Login&SignIn/employee_Login_Page.dart'; // ✅ correct import
+import 'package:hrms/Login&SignIn/employee_Login_Page.dart';
 import 'package:hrms/Overtime(Admin%20View)/admin_Overtime_HomeScreen.dart';
 import 'package:hrms/Shift%20Management/shift_Management_Screen.dart';
 import '../Service/secure_storage_service.dart';
@@ -22,6 +22,8 @@ class EmployeeHomeScreen extends StatefulWidget {
 
 class _EmployeeHomeScreenState extends State<EmployeeHomeScreen> {
   String firstName = "";
+  String searchQuery = "";
+  final TextEditingController searchController = TextEditingController();
 
   @override
   void initState() {
@@ -224,6 +226,11 @@ class _EmployeeHomeScreenState extends State<EmployeeHomeScreen> {
                     bottom: 10,
                   ),
                   child: TextField(
+                    onChanged: (value) {
+                      setState(() {
+                        searchQuery = value;
+                      });
+                    },
                     textInputAction: TextInputAction.done,
                     // onSubmitted: (_) => FocusScope.of(context).unfocus(),
                     decoration: InputDecoration(
