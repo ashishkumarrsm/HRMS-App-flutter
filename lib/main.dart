@@ -39,6 +39,7 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'package:hrms/EmployeeManagment/employee_Home_Screen.dart';
 import 'package:hrms/Login&SignIn/auth_gate_screen.dart';
 // import 'package:hrms/EmployeeManagment/employee_Home_Screen.dart';
 
@@ -66,7 +67,8 @@ class HRMSApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // AuthGate → decides route at runtime
-      home: const AuthGateScreen(),
+      // home: const AuthGateScreen(),
+      home: EmployeeHomeScreen(),
     );
   }
 }

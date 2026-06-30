@@ -1,19 +1,116 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hrms/EmployeeManagment/employee_Employee_Details_Screen.dart';
-import '../EmployeeManagment/Data/employee_Home_Card_Data.dart';
+import 'package:hrms/Models/all_Users.dart';
+import 'package:hrms/api_service/api_services.dart';
 
-class EmployeeHomeScreenCard extends StatelessWidget {
+class EmployeeHomeScreenCard extends StatefulWidget {
   const EmployeeHomeScreenCard({super.key});
 
   @override
+  State<EmployeeHomeScreenCard> createState() => _EmployeeHomeScreenCardState();
+}
+
+class _EmployeeHomeScreenCardState extends State<EmployeeHomeScreenCard> {
+  bool isLoading = true;
+  String? errorMessage;
+  AllUser? model;
+
+  @override
+  void initState() {
+    super.initState();
+    _getAllUser();
+  }
+
+  Future<void> _getAllUser() async {
+    setState(() {
+      isLoading = true;
+      errorMessage = null;
+    });
+    try {
+      final result = await ApiServices().getAllUsers();
+      print(result);
+      setState(() {
+        model = result;
+        isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        errorMessage = "Failed to load employees. Please try again.";
+        isLoading = false;
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
+    if (isLoading) {
+      return const Center(
+        child: Padding(
+          padding: EdgeInsets.all(32),
+          child: CircularProgressIndicator(color: Color(0xFF644EE5)),
+        ),
+      );
+    }
+
+    if (errorMessage != null) {
+      return Center(
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                errorMessage!,
+                textAlign: TextAlign.center,
+                style: GoogleFonts.inter(
+                  fontSize: 14,
+                  color: const Color(0xFF6B7280),
+                ),
+              ),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: _getAllUser,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF644EE5),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                child: Text(
+                  "Retry",
+                  style: GoogleFonts.inter(color: Colors.white),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    // ✅ Null check & empty check
+    if (model == null || model!.data == null || model!.data!.isEmpty) {
+      return Center(
+        child: Padding(
+          padding: const EdgeInsets.all(32),
+          child: Text(
+            "No employees found.",
+            style: GoogleFonts.inter(
+              fontSize: 14,
+              color: const Color(0xFF6B7280),
+            ),
+          ),
+        ),
+      );
+    }
+
     return ListView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: employees.length,
+      itemCount: model!.data!.length,
       itemBuilder: (context, index) {
-        final employee = employees[index];
+        // ✅ Typed model, index se sahi employee
+        final UserData employee = model!.data![index];
+        final bool isActive = (employee.status ?? '').toLowerCase() == 'active';
 
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
@@ -22,19 +119,17 @@ class EmployeeHomeScreenCard extends StatelessWidget {
             onTap: () async {
               final isKeyboardOpen =
                   MediaQuery.of(context).viewInsets.bottom > 0;
-
               if (isKeyboardOpen) {
                 FocusScope.of(context).unfocus();
-
                 await Future.delayed(const Duration(milliseconds: 100));
               }
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) =>
-                      EmployeeEmployeeDetailsScreen(employee: employee),
-                ),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) =>
+              //         EmployeeEmployeeDetailsScreen(employee: employee),
+              //   ),
+              // );
             },
             child: Card(
               elevation: 0,
@@ -59,15 +154,13 @@ class EmployeeHomeScreenCard extends StatelessWidget {
                           width: 20,
                           height: 20,
                         ),
-
                         const SizedBox(width: 10),
-
                         Expanded(
                           child: RichText(
                             text: TextSpan(
                               children: [
                                 TextSpan(
-                                  text: employee.name,
+                                  text: employee.firstName ?? '',
                                   style: GoogleFonts.inter(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w500,
@@ -75,7 +168,7 @@ class EmployeeHomeScreenCard extends StatelessWidget {
                                   ),
                                 ),
                                 TextSpan(
-                                  text: " · ${employee.id}",
+                                  text: " · ${employee.id ?? ''}",
                                   style: GoogleFonts.inter(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w500,
@@ -83,7 +176,7 @@ class EmployeeHomeScreenCard extends StatelessWidget {
                                   ),
                                 ),
                                 TextSpan(
-                                  text: " · ${employee.gender.toUpperCase()}",
+                                  text: " · ${employee.lastName ?? ''}",
                                   style: GoogleFonts.inter(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w500,
@@ -94,22 +187,22 @@ class EmployeeHomeScreenCard extends StatelessWidget {
                             ),
                           ),
                         ),
-
+                        // ✅ Status string se bool banana
                         Container(
                           padding: const EdgeInsets.symmetric(
                             horizontal: 14,
                             vertical: 8,
                           ),
                           decoration: BoxDecoration(
-                            color: employee.isActive
+                            color: isActive
                                 ? const Color(0xFFDCFCE7)
                                 : const Color(0xFFFEE2E2),
                             borderRadius: BorderRadius.circular(30),
                           ),
                           child: Text(
-                            employee.isActive ? "Active" : "Inactive",
+                            isActive ? "Active" : "Inactive",
                             style: GoogleFonts.inter(
-                              color: employee.isActive
+                              color: isActive
                                   ? const Color(0xFF16A34A)
                                   : const Color(0xFFDC2626),
                               fontWeight: FontWeight.w500,
@@ -121,7 +214,6 @@ class EmployeeHomeScreenCard extends StatelessWidget {
                     ),
 
                     const Divider(color: Color(0xFFE5E7EB)),
-
                     const SizedBox(height: 5),
 
                     Row(
@@ -129,14 +221,14 @@ class EmployeeHomeScreenCard extends StatelessWidget {
                         Expanded(
                           child: _InfoItem(
                             title: "Email Address",
-                            value: employee.email,
+                            value: employee.email ?? '-',
                           ),
                         ),
                         const SizedBox(width: 5),
                         Expanded(
                           child: _InfoItem(
                             title: "Mobile Number",
-                            value: employee.mobile,
+                            value: employee.phoneNumber ?? '-',
                           ),
                         ),
                       ],
@@ -149,14 +241,14 @@ class EmployeeHomeScreenCard extends StatelessWidget {
                         Expanded(
                           child: _InfoItem(
                             title: "Position",
-                            value: employee.position,
+                            value: employee.role ?? '-',
                           ),
                         ),
                         const SizedBox(width: 5),
                         Expanded(
                           child: _InfoItem(
                             title: "Department",
-                            value: employee.department,
+                            value: employee.roleName ?? '-',
                           ),
                         ),
                       ],
@@ -168,15 +260,15 @@ class EmployeeHomeScreenCard extends StatelessWidget {
                       children: [
                         Expanded(
                           child: _InfoItem(
-                            title: "Years of Service",
-                            value: employee.yearsOfService,
+                            title: "Created At",
+                            value: employee.createdAt ?? '-',
                           ),
                         ),
                         const SizedBox(width: 5),
                         Expanded(
                           child: _InfoItem(
-                            title: "Join Date",
-                            value: employee.joinDate,
+                            title: "Last Login",
+                            value: employee.lastLogin ?? '__/__/__',
                           ),
                         ),
                       ],
